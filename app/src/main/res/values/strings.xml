@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Choices</string>
+    <string name="quitApp">Quit</string>
+    <string name="choose">Choose your adventure!</string>
+    <string name="Defense">Defense</string>
+    <string name="Health">Health</string>
+    <string name="Attack">Attack</string>
+    <string name="battle">Battle!</string>
+    <string name="fight">Fight!</string>
+</resources>
