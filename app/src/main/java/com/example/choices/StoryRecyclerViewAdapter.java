@@ -12,6 +12,7 @@ import com.example.choices.Fantasy.Fantasy_Event;
 import com.example.choices.Fantasy.Fantasy_Player;
 import com.example.choices.GettingReady.Alan_Event;
 import com.example.choices.GettingReady.Alan_Player;
+import com.example.choices.Rhothomir.Rhothomir;
 
 import java.util.List;
 import java.util.Random;
@@ -52,6 +53,7 @@ public class StoryRecyclerViewAdapter extends RecyclerView.Adapter<StoryRecycler
                     Toast.makeText(context, storyName + " is selected", Toast.LENGTH_SHORT).show();
                     String storyTimeClass1 = "Alan's Dilemma";
                     String storyTimeClass2 = "Fantasy";
+                    String storyTimeClass3 = "Rhothomir's Crown";
                     if(storyName.equals(storyTimeClass1)) {
                         Intent newStory = new Intent(context, Alan_Event.class);
                         Alan_Player.setCurrentEventID(1.0);
@@ -69,8 +71,12 @@ public class StoryRecyclerViewAdapter extends RecyclerView.Adapter<StoryRecycler
                         Fantasy_Player.setAttack(start_attack.nextInt(6));
                         Fantasy_Player.setName("Pum Pum Bear");
                         Fantasy_Player.setEnemyCheck(0);
-//                        Story_Select.getInstance().finish();
                         context.startActivity(newStory);
+                    }
+                    if(storyName.equals((storyTimeClass3))){
+                        Intent newStory =new Intent(context, Rhothomir.class);
+                        context.startActivity(newStory);
+
                     }
                 }
             });
