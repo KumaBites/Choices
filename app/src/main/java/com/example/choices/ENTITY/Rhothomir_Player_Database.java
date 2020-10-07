@@ -1,5 +1,7 @@
 package com.example.choices.ENTITY;
 
+import android.net.Uri;
+
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -10,9 +12,27 @@ public class Rhothomir_Player_Database {
     private String name;
     private String race;
     private String background;
-    private int health;
+    private int strength;
     private int endurance;
     private int willpower;
+    private String uri;
+    public String getUri() {
+        return uri;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
+
+
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
 
     public int getCharacter_id() {
         return character_id;
@@ -46,13 +66,7 @@ public class Rhothomir_Player_Database {
         this.background = background;
     }
 
-    public int getHealth() {
-        return health;
-    }
 
-    public void setHealth(int health) {
-        this.health = health;
-    }
 
     public int getEndurance() {
         return endurance;

@@ -44,7 +44,7 @@ public class Rhothomir extends AppCompatActivity {
             Rhothomir_Player.setRace(RPD.getRace());
             Rhothomir_Player.setBackground(RPD.getBackground());
             Rhothomir_Player.setEndurance(RPD.getEndurance());
-            Rhothomir_Player.setHealth(RPD.getHealth());
+            Rhothomir_Player.setStrength(RPD.getStrength());
             Rhothomir_Player.setWillpower(RPD.getWillpower());
 
             character = findViewById(R.id.chark);
@@ -66,7 +66,7 @@ public class Rhothomir extends AppCompatActivity {
             end.setText(String.valueOf(Rhothomir_Player.getEndurance()));
 
             health = findViewById(R.id.heath);
-            health.setText(String.valueOf(Rhothomir_Player.getHealth()));
+            health.setText(String.valueOf(Rhothomir_Player.getStrength()));
         }
     }
 

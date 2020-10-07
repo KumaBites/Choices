@@ -5,7 +5,7 @@ public class Rhothomir_Player {
     private static String name;
     private static String race;
     private static String background;
-    private static int health;
+    private static int strength;
     private static int endurance;
     private static int willpower;
     public static int getCharacter_id() {
@@ -40,12 +40,12 @@ public class Rhothomir_Player {
         Rhothomir_Player.background = background;
     }
 
-    public static int getHealth() {
-        return health;
+    public static int getStrength() {
+        return strength;
     }
 
-    public static void setHealth(int health) {
-        Rhothomir_Player.health = health;
+    public static void setStrength(int strength) {
+        Rhothomir_Player.strength = strength;
     }
 
     public static int getEndurance() {

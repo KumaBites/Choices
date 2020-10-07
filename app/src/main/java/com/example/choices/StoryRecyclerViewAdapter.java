@@ -12,6 +12,7 @@ import com.example.choices.Fantasy.Fantasy_Event;
 import com.example.choices.Fantasy.Fantasy_Player;
 import com.example.choices.GettingReady.Alan_Event;
 import com.example.choices.GettingReady.Alan_Player;
+import com.example.choices.Rhothomir.RecyclerView.Character_Select;
 import com.example.choices.Rhothomir.Rhothomir;
 
 import java.util.List;
@@ -22,12 +23,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class StoryRecyclerViewAdapter extends RecyclerView.Adapter<StoryRecyclerViewAdapter.StoryViewHolder> {
         private String checkStoryName;
-        private List<StoryModel> storyList;
+        private List<Story_Select_Model> storyList;
         Context context;
         private Random start_health, start_attack, start_defense;
 
 
-        public StoryRecyclerViewAdapter(List<StoryModel> storyList, Context context) {
+        public StoryRecyclerViewAdapter(List<Story_Select_Model> storyList, Context context) {
             this.storyList = storyList;
             this.context = context;
         }
@@ -74,7 +75,7 @@ public class StoryRecyclerViewAdapter extends RecyclerView.Adapter<StoryRecycler
                         context.startActivity(newStory);
                     }
                     if(storyName.equals((storyTimeClass3))){
-                        Intent newStory =new Intent(context, Rhothomir.class);
+                        Intent newStory =new Intent(context, Character_Select.class);
                         context.startActivity(newStory);
 
                     }

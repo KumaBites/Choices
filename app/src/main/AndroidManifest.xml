@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Rhothomir.Rhothomir"></activity>
+        <activity android:name=".Rhothomir.RecyclerView.Character_Select"></activity>
+        <activity android:name=".Rhothomir.Rhothomir" />
         <activity android:name=".Fantasy.Fantasy_Battle" />
         <activity android:name=".Fantasy.Fantasy_Event" />
         <activity android:name=".GettingReady.Alan_Event" />

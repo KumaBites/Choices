@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.graphics.ColorSpace;
 import android.os.Bundle;
 import android.view.View;
 
@@ -16,7 +15,7 @@ public class Story_Select extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private StoryRecyclerViewAdapter mAdapter;
-    private List<StoryModel> debtListArray;
+    private List<Story_Select_Model> debtListArray;
     private static Story_Select activityHandle = null;
 
     @Override
@@ -28,15 +27,15 @@ public class Story_Select extends AppCompatActivity {
 
         //getting the recyclerview from xml
         mRecyclerView = findViewById(R.id.storyRecyclerView);
-        //mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        mRecyclerView.setLayoutManager(layoutManager);
 
         //Populate the products
 
         debtListArray = new ArrayList<>();
-        debtListArray.add(new StoryModel("Fantasy"));
-        debtListArray.add(new StoryModel("Alan's Dilemma"));
-        debtListArray.add(new StoryModel("Rhothomir's Crown"));
+        debtListArray.add(new Story_Select_Model("Fantasy"));
+        debtListArray.add(new Story_Select_Model("Alan's Dilemma"));
+        debtListArray.add(new Story_Select_Model("Rhothomir's Crown"));
 
 
 
