@@ -6,12 +6,12 @@ public class Character_Select_Model {
     public String select_name;
     public String select_race;
     public String select_background;
-    public int select_strength;
-    public int select_endurance;
-    public int select_willpower;
-    public Uri select_uri;
+    public String select_strength;
+    public String select_endurance;
+    public String select_willpower;
+    public String select_uri;
 
-    public Character_Select_Model(String select_name,String select_race,String select_background, int select_strength, int select_endurance, int select_willpower,Uri select_uri)
+    public Character_Select_Model(String select_name,String select_race,String select_background, String select_strength, String select_endurance, String select_willpower,String select_uri)
 
     {
         this.select_name = select_name;
@@ -19,7 +19,7 @@ public class Character_Select_Model {
         this.select_background = select_background;
         this.select_strength = select_strength;
         this.select_endurance = select_endurance;
-        this.select_willpower = select_endurance;
+        this.select_willpower = select_willpower;
         this.select_uri = select_uri;
     }
     public String getSelect_name() {
@@ -46,35 +46,35 @@ public class Character_Select_Model {
         this.select_background = select_background;
     }
 
-    public int getSelect_strength() {
+    public String getSelect_strength() {
         return select_strength;
     }
 
-    public void setSelect_strength(int select_strength) {
+    public void setSelect_strength(String select_strength) {
         this.select_strength = select_strength;
     }
 
-    public int getSelect_endurance() {
+    public String getSelect_endurance() {
         return select_endurance;
     }
 
-    public void setSelect_endurance(int select_endurance) {
+    public void setSelect_endurance(String select_endurance) {
         this.select_endurance = select_endurance;
     }
 
-    public int getSelect_willpower() {
+    public String getSelect_willpower() {
         return select_willpower;
     }
 
-    public void setSelect_willpower(int select_willpower) {
+    public void setSelect_willpower(String select_willpower) {
         this.select_willpower = select_willpower;
     }
 
-    public Uri getSelect_uri() {
+    public String getSelect_uri() {
         return select_uri;
     }
 
-    public void setSelect_uri(Uri select_uri) {
+    public void setSelect_uri(String select_uri) {
         this.select_uri = select_uri;
     }
 

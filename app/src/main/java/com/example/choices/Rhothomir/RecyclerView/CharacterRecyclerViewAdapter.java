@@ -1,6 +1,8 @@
 package com.example.choices.Rhothomir.RecyclerView;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,14 +40,17 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
 
         @Override
         public void onBindViewHolder(CharacterSelectViewHolder holder, final int position) {
+            String id1 = character_select_modelList.get(position).getSelect_uri();
+            int id = context.getResources().getIdentifier(id1, "drawable", context.getPackageName());
 
-            holder.txtcharacter_name.setText(character_select_modelList.get(position).getSelect_name());
-            holder.txtrace.setText(character_select_modelList.get(position).getSelect_race());
-            holder.txtbackground.setText(character_select_modelList.get(position).getSelect_background());
-            holder.txtendurance.setText(character_select_modelList.get(position).getSelect_endurance());
-            holder.txtstrength.setText(character_select_modelList.get(position).getSelect_strength());
-            holder.txtwillpower.setText(character_select_modelList.get(position).getSelect_willpower());
-            holder.txtcharacter_image.setImageURI(character_select_modelList.get(position).getSelect_uri());
+
+            holder.txtcharacter_name.setText("Character name: "+character_select_modelList.get(position).getSelect_name());
+            holder.txtrace.setText("Character race: "+character_select_modelList.get(position).getSelect_race());
+            holder.txtbackground.setText("Background: "+character_select_modelList.get(position).getSelect_background());
+            holder.txtendurance.setText("Endurance: "+character_select_modelList.get(position).getSelect_endurance());
+            holder.txtstrength.setText("Strength: "+character_select_modelList.get(position).getSelect_strength());
+            holder.txtwillpower.setText("Willpower: "+character_select_modelList.get(position).getSelect_willpower());
+            holder.txtcharacter_image.setImageResource(id);//
 
 
 
@@ -59,9 +64,9 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
             TextView txtcharacter_name;
             TextView txtrace;
             TextView txtbackground;
+            TextView txtendurance;
             TextView txtstrength;
             TextView txtwillpower;
-            TextView txtendurance;
             ImageView txtcharacter_image;
 
 

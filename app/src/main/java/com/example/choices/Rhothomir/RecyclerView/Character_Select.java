@@ -31,9 +31,9 @@ public class Character_Select extends AppCompatActivity {
     private List<Character_Select_Model> currentCharacterList;
     private List<Rhothomir_Player_Database> databaseList;
     private CharacterRecyclerViewAdapter eAdapter;
-    private String select_name,select_race,select_background, oldUriString;
-    public int select_strength,select_endurance,select_willpower;
-    public Uri select_uri;
+    private String select_name,select_race,select_background,oldUriString, select_strength,select_endurance,select_willpower;
+    public int oldSelect_strength,oldSelect_endurance,oldSelect_willpower;
+    public String select_uri;
     EventsDatabase eDatabase;
     private static Activity character_select_activity;
     @Override
@@ -43,6 +43,7 @@ public class Character_Select extends AppCompatActivity {
         character_view =findViewById(R.id.character_select_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         character_view.setLayoutManager(linearLayoutManager);
+        eDatabase = EventsDatabase.getDatabase(this);
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         getEventCallable newEvent = new getEventCallable();
         Future<List<Rhothomir_Player_Database>> future = executorService.submit(newEvent);
@@ -63,11 +64,18 @@ public class Character_Select extends AppCompatActivity {
             select_name = RPD.getName();
             select_background = RPD.getBackground();
             select_race =RPD.getRace();
-            select_strength = RPD.getStrength();
-            select_endurance = RPD.getEndurance();
-            select_willpower = RPD.getWillpower();
-            oldUriString = RPD.getUri();
-            select_uri =  stringToUriConverter(oldUriString);
+            oldSelect_strength = RPD.getStrength();
+            select_strength = String.valueOf(oldSelect_strength);
+
+            oldSelect_endurance = RPD.getEndurance();
+            select_endurance = String.valueOf(oldSelect_endurance);
+
+            oldSelect_willpower = RPD.getWillpower();
+            select_willpower = String.valueOf(oldSelect_willpower);
+
+
+            select_uri =  RPD.getUri();
+
             currentCharacterList.add(new Character_Select_Model(select_name,select_race,select_background,select_strength,select_endurance, select_willpower,select_uri));
 
         }
@@ -93,9 +101,5 @@ public class Character_Select extends AppCompatActivity {
         }
     }
 
-    public Uri stringToUriConverter(String oldUri)
-    {
-        Uri uri = Uri.parse("android.resource://com.example.choices/drawable/"+oldUri);
-        return uri;
-    }
+
 }

@@ -9,6 +9,7 @@ import com.example.choices.DAO.Rhothomir_Dao;
 import com.example.choices.ENTITY.Events;
 import com.example.choices.ENTITY.Fantasy_Enemy;
 import com.example.choices.ENTITY.Fantasy_Events;
+import com.example.choices.ENTITY.Rhothomir_Enemy_Database;
 import com.example.choices.ENTITY.Rhothomir_Player_Database;
 
 import androidx.room.Database;
@@ -16,7 +17,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 
-@Database(entities = {Events.class, Fantasy_Enemy.class, Fantasy_Events.class, Rhothomir_Player_Database.class}, version = 1, exportSchema =  false)
+@Database(entities = {Events.class, Fantasy_Enemy.class, Fantasy_Events.class, Rhothomir_Player_Database.class, Rhothomir_Enemy_Database.class}, version = 1, exportSchema =  false)
 public abstract class EventsDatabase extends RoomDatabase {
 
 
@@ -24,6 +25,7 @@ public abstract class EventsDatabase extends RoomDatabase {
     public abstract Fantasy_Events_Dao fantasyDao();
     public abstract Fantasy_Enemy_Dao fantasyEnemyDao();
     public abstract Rhothomir_Dao rhothomir_dao();
+    public abstract Rhothomir_Enemy_Database rhothomir_enemy_database();
     private static volatile EventsDatabase INSTANCE;
 
     public static EventsDatabase getDatabase(final Context context) {
