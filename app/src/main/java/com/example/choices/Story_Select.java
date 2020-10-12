@@ -34,6 +34,7 @@ public class Story_Select extends AppCompatActivity {
 
         debtListArray = new ArrayList<>();
         debtListArray.add(new Story_Select_Model("Rhothomir's Crown"));
+        debtListArray.add(new Story_Select_Model("Credits"));
 
 
 

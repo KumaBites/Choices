@@ -58,7 +58,10 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
             holder.txtendurance.setText("Endurance: "+character_select_modelList.get(position).getSelect_endurance());
             holder.txtstrength.setText("Strength: "+character_select_modelList.get(position).getSelect_strength());
             holder.txtwillpower.setText("Willpower: "+character_select_modelList.get(position).getSelect_willpower());
-            holder.txtcharacter_image.setImageResource(id);//
+            holder.txtcharacter_image.setImageResource(id);
+
+
+
             holder.txtcharacter_image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -78,8 +81,7 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 int newStrength,newEndurance,newWillpower;
-                                String strength,endurance,willpower,background;
-                                //Get Player Stats from arraylist
+                                String strength,endurance,willpower;
                                willpower = character_select_modelList.get(position).getSelect_willpower();
                                endurance = character_select_modelList.get(position).getSelect_endurance();
                                strength = character_select_modelList.get(position).getSelect_strength();

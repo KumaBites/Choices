@@ -17,13 +17,15 @@
 
         <RelativeLayout
             android:layout_width="376dp"
-            android:layout_height="451dp">
-
+            android:layout_height="451dp"
+            android:background="@drawable/stone">
             <TextView
                 android:id="@+id/character_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingLeft="25dp"
                 android:layout_alignParentTop="true"
+
                 android:textStyle="bold" />
 
             <TextView
@@ -31,14 +33,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/character_name"
+                android:paddingLeft="25dp"
+                android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/background"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/race"
-
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
             <TextView
@@ -46,7 +52,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/background"
-
+                android:paddingLeft="25dp"
+                android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
             <TextView
@@ -54,7 +61,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/strength"
-
+                android:paddingLeft="25dp"
+                android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
             <TextView
@@ -62,7 +70,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/willpower"
-
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:textColor="@android:color/holo_green_dark"
                 android:textStyle="bold" />
 
             <ImageView
