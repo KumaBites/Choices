@@ -25,7 +25,7 @@
         android:layout_marginBottom="44dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="14dp"
-        android:src="@drawable/nathaniel"
+        android:src="@drawable/dwarf"
         app:layout_constraintBottom_toTopOf="@+id/eHealthView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playerNameView" />
@@ -104,7 +104,7 @@
         android:layout_height="135dp"
         android:layout_marginBottom="118dp"
         android:layout_marginEnd="49dp"
-        android:src="@drawable/nathaniel"
+        android:src="@drawable/dwarf"
         app:layout_constraintBottom_toTopOf="@+id/button4"
         app:layout_constraintEnd_toEndOf="parent" />
 

@@ -12,8 +12,7 @@ import com.example.choices.Fantasy.Fantasy_Event;
 import com.example.choices.Fantasy.Fantasy_Player;
 import com.example.choices.GettingReady.Alan_Event;
 import com.example.choices.GettingReady.Alan_Player;
-import com.example.choices.Rhothomir.RecyclerView.Character_Select;
-import com.example.choices.Rhothomir.Rhothomir;
+import com.example.choices.Rhothomir.CharacterSelectRecyclerView.Character_Select;
 
 import java.util.List;
 import java.util.Random;

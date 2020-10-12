@@ -33,8 +33,6 @@ public class Story_Select extends AppCompatActivity {
         //Populate the products
 
         debtListArray = new ArrayList<>();
-        debtListArray.add(new Story_Select_Model("Fantasy"));
-        debtListArray.add(new Story_Select_Model("Alan's Dilemma"));
         debtListArray.add(new Story_Select_Model("Rhothomir's Crown"));
 
 

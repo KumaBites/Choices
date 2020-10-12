@@ -4,30 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Rhothomir.RecyclerView.Character_Select">
+
+    tools:context=".Rhothomir.CharacterSelectRecyclerView.Character_Select">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/character_select_view"
-        android:layout_width="403dp"
-        android:layout_height="519dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="38dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="330dp"
+        android:layout_height="501dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="49dp"
+        android:layout_marginEnd="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="170dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginBottom="68dp"
+        android:layout_width="202dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="128dp"
         android:text="@string/ChooseYourCharacter"
-        app:layout_constraintBottom_toTopOf="@+id/character_select_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/goBackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="36dp"
+        android:onClick="quitToMainMenu"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/character_select_view" />
 </androidx.constraintlayout.widget.ConstraintLayout>
