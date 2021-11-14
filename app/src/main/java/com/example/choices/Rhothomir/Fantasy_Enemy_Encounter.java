@@ -1,4 +1,4 @@
-package com.example.choices.Fantasy;
+package com.example.choices.Rhothomir;
 
 public class Fantasy_Enemy_Encounter {
 
@@ -8,6 +8,17 @@ public class Fantasy_Enemy_Encounter {
     private static int enemy_attack;
     private static int enemy_defense;
     private static double nextEventId;
+    public static String uri;
+
+
+    public static String getUri() {
+        return uri;
+    }
+
+    public static void setUri(String uri) {
+        Fantasy_Enemy_Encounter.uri = uri;
+    }
+
     public static int getEnemyId() {
         return enemyId;
     }

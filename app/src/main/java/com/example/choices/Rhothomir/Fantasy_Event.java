@@ -1,4 +1,4 @@
-package com.example.choices.Fantasy;
+package com.example.choices.Rhothomir;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -48,11 +48,12 @@ public class Fantasy_Event extends AppCompatActivity {
         setContentView(R.layout.activity_event);
         event = findViewById(R.id.EventRecyclerView);
         descrption = findViewById(R.id.Description);
-        currentEventID = Fantasy_Player.getCurrentEventID();
+        currentEventID = Rhothomir_Player.getCurrentEventID();
         eDatabase = EventsDatabase.getDatabase(this);
-        currentEventID = Fantasy_Player.getCurrentEventID();
-        enemyCheck = Fantasy_Player.getEnemyCheck();
+        currentEventID = Rhothomir_Player.getCurrentEventID();
+        enemyCheck = Rhothomir_Player.getEnemyCheck();
         activity = this;
+
         if(currentEventID == 0.0)
         {
 
@@ -86,15 +87,15 @@ public class Fantasy_Event extends AppCompatActivity {
             currentEventList = new ArrayList<>();
 
             for (Fantasy_Events EM : allStoryEventList) {
-                Fantasy_Player.setNextEventID1(EM.getFantasyNextEventID1());
-                Fantasy_Player.setNextEventID2(EM.getFantasyNextEventID2());
-                Fantasy_Player.setNextEventID3(EM.getFantasyNextEventID3());
-                Fantasy_Player.setEventToast1(EM.getFantasyEventToast1());
-                Fantasy_Player.setEventToast2(EM.getFantasyEventToast2());
-                Fantasy_Player.setEventToast3(EM.getFantasyEventToast3());
+              Rhothomir_Player.setNextEventID1(EM.getFantasyNextEventID1());
+              Rhothomir_Player.setNextEventID2(EM.getFantasyNextEventID2());
+              Rhothomir_Player.setNextEventID3(EM.getFantasyNextEventID3());
+              Rhothomir_Player.setEventToast1(EM.getFantasyEventToast1());
+              Rhothomir_Player.setEventToast2(EM.getFantasyEventToast2());
+              Rhothomir_Player.setEventToast3(EM.getFantasyEventToast3());
 
                 enemyCheck = EM.getEnemyCheck();
-                Fantasy_Player.setEnemyCheck(enemyCheck);
+                Rhothomir_Player.setEnemyCheck(enemyCheck);
                 enemyId = EM.getEnemyId();
                 Fantasy_Enemy_Encounter.setEnemyId(enemyId);
                 descrption.setText(EM.getFantasyEventDescription());

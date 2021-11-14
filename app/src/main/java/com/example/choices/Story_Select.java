@@ -27,15 +27,13 @@ public class Story_Select extends AppCompatActivity {
 
         //getting the recyclerview from xml
         mRecyclerView = findViewById(R.id.storyRecyclerView);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
 
-        //Populate the products
+        //Populate the list with the game names
 
         debtListArray = new ArrayList<>();
         debtListArray.add(new Story_Select_Model("Rhothomir's Crown"));
-        debtListArray.add(new Story_Select_Model("Credits"));
-
 
 
         //set adapter to recyclerview

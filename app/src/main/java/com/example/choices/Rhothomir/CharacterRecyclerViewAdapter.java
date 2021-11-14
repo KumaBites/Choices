@@ -1,4 +1,4 @@
-package com.example.choices.Rhothomir.CharacterSelectRecyclerView;
+package com.example.choices.Rhothomir;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,17 +14,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.choices.Fantasy.Fantasy_Event;
-import com.example.choices.Fantasy.Fantasy_Player;
-import com.example.choices.GettingReady.Alan_Event;
-import com.example.choices.GettingReady.Alan_Player;
 import com.example.choices.R;
-import com.example.choices.Rhothomir.Rhothomir_Player;
 import com.example.choices.Story_Select;
 
 
 import java.util.List;
-import java.util.Random;
 
 
 public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<CharacterRecyclerViewAdapter.CharacterSelectViewHolder> {
@@ -46,10 +40,34 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
             return gvh;
         }
 
+        //The method takes the position of the character and sets the parameters and picture id and starts a new game when clicked
+        public void newCharacter(int position, String character, String imageCheck, int id)
+        {
+            int newStrength,newEndurance,newWillpower;
+            String strength,endurance,willpower;
+            willpower = character_select_modelList.get(position).getSelect_willpower();
+            endurance = character_select_modelList.get(position).getSelect_endurance();
+            strength = character_select_modelList.get(position).getSelect_strength();
+            newStrength = Integer.parseInt(strength);
+            newEndurance =Integer.parseInt(endurance);
+            newWillpower = Integer.parseInt(willpower);
+            //Set Player Stats
+            Rhothomir_Player.setName(character);
+            Rhothomir_Player.setRace(imageCheck);
+            Rhothomir_Player.setBackground(character_select_modelList.get(position).getSelect_background());
+            Rhothomir_Player.setStrength(newStrength);
+            Rhothomir_Player.setWillpower(newWillpower);
+            Rhothomir_Player.setEndurance(newEndurance);
+            Rhothomir_Player.setCurrentEventID(1.0);
+            Rhothomir_Player.setPicturUrl(id);
+
+            Intent newIntent = new Intent(context, Fantasy_Event.class);
+            context.startActivity(newIntent);
+        }
         @Override
         public void onBindViewHolder(CharacterSelectViewHolder holder, final int position) {
             String id1 = character_select_modelList.get(position).getSelect_uri();
-            int id = context.getResources().getIdentifier(id1, "drawable", context.getPackageName());
+            final int id = context.getResources().getIdentifier(id1, "drawable", context.getPackageName());
 
 
             holder.txtcharacter_name.setText("Character name: "+character_select_modelList.get(position).getSelect_name());
@@ -60,8 +78,6 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
             holder.txtwillpower.setText("Willpower: "+character_select_modelList.get(position).getSelect_willpower());
             holder.txtcharacter_image.setImageResource(id);
 
-
-
             holder.txtcharacter_image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -69,8 +85,6 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
                     final String elf = "Nardual Glynwynn";
                     final String dwarf ="Throdgram Redbringer";
                     final String human = "Rave Vossen";
-
-                    final Intent newStory = new Intent(context,Story_Select.class);
                     if (imageCheck.equals("elf"))
                     {
                     Toast.makeText(context, elf + " is selected", Toast.LENGTH_SHORT).show();
@@ -80,22 +94,7 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
                         builder.setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                int newStrength,newEndurance,newWillpower;
-                                String strength,endurance,willpower;
-                               willpower = character_select_modelList.get(position).getSelect_willpower();
-                               endurance = character_select_modelList.get(position).getSelect_endurance();
-                               strength = character_select_modelList.get(position).getSelect_strength();
-                               newStrength = Integer.parseInt(strength);
-                               newEndurance =Integer.parseInt(endurance);
-                               newWillpower = Integer.parseInt(willpower);
-                               //Set Player Stats
-                                Rhothomir_Player.setName(elf);
-                                Rhothomir_Player.setRace(imageCheck);
-                                Rhothomir_Player.setBackground(character_select_modelList.get(position).getSelect_background());
-                                Rhothomir_Player.setStrength(newStrength);
-                                Rhothomir_Player.setWillpower(newWillpower);
-                                Rhothomir_Player.setEndurance(newEndurance);
-
+                        newCharacter(position,elf,imageCheck,id);
 
                             }
                         });
@@ -110,6 +109,7 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
                         builder.setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                newCharacter(position,dwarf,imageCheck,id);
                             }
                         });
                         builder.show();
@@ -123,6 +123,7 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
                         builder.setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                newCharacter(position,human,imageCheck,id);
                             }
                         });
                         builder.show();

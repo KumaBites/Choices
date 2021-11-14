@@ -1,4 +1,4 @@
-package com.example.choices.Fantasy;
+package com.example.choices.Rhothomir;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -47,7 +47,7 @@ public class Fantasy_EventRecyclerViewAdapter extends RecyclerView.Adapter<Fanta
             public void onClick(View v) {
                 String eventName1 = eventList.get(position).getEventChoice1();
                 Toast.makeText(context, eventName1 + " is selected", Toast.LENGTH_SHORT).show();
-                Fantasy_Player.setCurrentEventID(Fantasy_Player.getNextEventID1());
+                Rhothomir_Player.setCurrentEventID(Rhothomir_Player.getNextEventID1());
                 displayResult1();
 
 
@@ -60,7 +60,7 @@ public class Fantasy_EventRecyclerViewAdapter extends RecyclerView.Adapter<Fanta
             public void onClick(View v) {
                 String eventName2 = eventList.get(position).getEventChoice2();
                 Toast.makeText(context, eventName2 + " is selected", Toast.LENGTH_SHORT).show();
-                Fantasy_Player.setCurrentEventID(Fantasy_Player.getNextEventID2());
+                Rhothomir_Player.setCurrentEventID(Rhothomir_Player.getNextEventID2());
                 displayResult2();
             }
         });
@@ -69,7 +69,7 @@ public class Fantasy_EventRecyclerViewAdapter extends RecyclerView.Adapter<Fanta
             public void onClick(View v) {
                 String eventName3 = eventList.get(position).getEventChoice3();
                 Toast.makeText(context, eventName3 + " is selected", Toast.LENGTH_SHORT).show();
-                Fantasy_Player.setCurrentEventID(Fantasy_Player.getNextEventID3());
+               Rhothomir_Player.setCurrentEventID(Rhothomir_Player.getNextEventID3());
                 displayResult3();
             }
         });
@@ -95,7 +95,7 @@ public class Fantasy_EventRecyclerViewAdapter extends RecyclerView.Adapter<Fanta
     }
     private void displayResult1() {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setMessage(Fantasy_Player.getEventToast1());
+        builder.setMessage(Rhothomir_Player.getEventToast1());
         builder.setCancelable(false);
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
@@ -109,7 +109,7 @@ public class Fantasy_EventRecyclerViewAdapter extends RecyclerView.Adapter<Fanta
     }
     private void displayResult2() {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setMessage(Fantasy_Player.getEventToast2());
+        builder.setMessage(Rhothomir_Player.getEventToast2());
         builder.setCancelable(false);
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
@@ -124,7 +124,7 @@ public class Fantasy_EventRecyclerViewAdapter extends RecyclerView.Adapter<Fanta
     }
     private void displayResult3() {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setMessage(Fantasy_Player.getEventToast3());
+        builder.setMessage(Rhothomir_Player.getEventToast3());
         builder.setCancelable(false);
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override

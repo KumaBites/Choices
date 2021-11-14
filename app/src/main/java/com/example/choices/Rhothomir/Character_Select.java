@@ -1,4 +1,4 @@
-package com.example.choices.Rhothomir.CharacterSelectRecyclerView;
+package com.example.choices.Rhothomir;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,7 +8,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import com.example.choices.ENTITY.Rhothomir_Player_Database;
 import com.example.choices.EventsDatabase;
@@ -41,7 +40,11 @@ public class Character_Select extends AppCompatActivity {
         character_view =findViewById(R.id.character_select_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         character_view.setLayoutManager(linearLayoutManager);
+
+        //Gets database connection
         eDatabase = EventsDatabase.getDatabase(this);
+
+        //Creates new thread and new callable to get characters from the database, and a future to get the data
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         getEventCallable newEvent = new getEventCallable();
         Future<List<Rhothomir_Player_Database>> future = executorService.submit(newEvent);
@@ -53,14 +56,15 @@ public class Character_Select extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         databaseList = result;
-        currentCharacterList = new ArrayList<>();
 
+        // Takes in the result and uses a for loop to get the data to populate the cardview
+        currentCharacterList = new ArrayList<>();
         for (Rhothomir_Player_Database RPD : databaseList) {
             select_name = RPD.getName();
             select_background = RPD.getBackground();
             select_race =RPD.getRace();
+
             oldSelect_strength = RPD.getStrength();
             select_strength = String.valueOf(oldSelect_strength);
 
@@ -73,13 +77,13 @@ public class Character_Select extends AppCompatActivity {
             select_uri =  RPD.getUri();
 
             currentCharacterList.add(new Character_Select_Model(select_name,select_race,select_background,select_strength,select_endurance, select_willpower,select_uri));
-
         }
         eAdapter = new CharacterRecyclerViewAdapter(currentCharacterList, this);
         character_view.setAdapter(eAdapter);
 
     }
 
+    //A method creates a callable to get all the characters to populate the card view
     private class getEventCallable implements Callable<List<Rhothomir_Player_Database>>
     {
         List<Rhothomir_Player_Database> rList;
@@ -91,7 +95,7 @@ public class Character_Select extends AppCompatActivity {
 
         }
     }
-
+    //Quits to main menu
     public void quitToMainMenu(View view){
         Intent quit = new Intent(this, Story_Select.class);
         startActivity(quit);

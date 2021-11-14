@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/lwood3"
     tools:context=".Story_Select">
 
     <Button
@@ -31,6 +32,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
+
         android:id="@+id/storyRecyclerView"
         android:layout_width="346dp"
         android:layout_height="423dp"
@@ -39,6 +41,7 @@
         android:layout_marginLeft="41dp"
         android:layout_marginRight="41dp"
         android:layout_marginStart="41dp"
+
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

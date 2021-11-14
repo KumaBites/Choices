@@ -1,6 +1,7 @@
 package com.example.choices;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,23 +9,20 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.choices.Fantasy.Fantasy_Event;
-import com.example.choices.Fantasy.Fantasy_Player;
-import com.example.choices.GettingReady.Alan_Event;
-import com.example.choices.GettingReady.Alan_Player;
-import com.example.choices.Rhothomir.CharacterSelectRecyclerView.Character_Select;
+import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.choices.Rhothomir.Character_Select;
+import com.example.choices.Rhothomir.Fantasy_Event;
+import com.example.choices.Rhothomir.Rhothomir_Player;
 
 import java.util.List;
-import java.util.Random;
-
-import androidx.recyclerview.widget.RecyclerView;
 
 
 public class StoryRecyclerViewAdapter extends RecyclerView.Adapter<StoryRecyclerViewAdapter.StoryViewHolder> {
-        private String checkStoryName;
         private List<Story_Select_Model> storyList;
         Context context;
-        private Random start_health, start_attack, start_defense;
+
 
 
         public StoryRecyclerViewAdapter(List<Story_Select_Model> storyList, Context context) {
@@ -40,6 +38,7 @@ public class StoryRecyclerViewAdapter extends RecyclerView.Adapter<StoryRecycler
             return gvh;
         }
 
+        // When the story name is selected a pop up message comes up to confirm selction.
         @Override
         public void onBindViewHolder(StoryViewHolder holder, final int position) {
 
@@ -50,33 +49,19 @@ public class StoryRecyclerViewAdapter extends RecyclerView.Adapter<StoryRecycler
                 @Override
                 public void onClick(View v) {
                     String storyName = storyList.get(position).getStoryName();
-                    Toast.makeText(context, storyName + " is selected", Toast.LENGTH_SHORT).show();
-                    String storyTimeClass1 = "Alan's Dilemma";
-                    String storyTimeClass2 = "Fantasy";
-                    String storyTimeClass3 = "Rhothomir's Crown";
-                    if(storyName.equals(storyTimeClass1)) {
-                        Intent newStory = new Intent(context, Alan_Event.class);
-                        Alan_Player.setCurrentEventID(1.0);
-                        //Story_Select.getInstance().finish();
-                        context.startActivity(newStory);
-                    }
-                    if(storyName.equals(storyTimeClass2)) {
-                        Intent newStory = new Intent(context, Fantasy_Event.class);
-                        Fantasy_Player.setCurrentEventID(1.0);
-                        start_health = new Random();
-                        start_defense = new Random();
-                        start_attack = new Random();
-                        Fantasy_Player.setHeath(start_attack.nextInt(6));
-                        Fantasy_Player.setDefense(start_defense.nextInt(6));
-                        Fantasy_Player.setAttack(start_attack.nextInt(6));
-                        Fantasy_Player.setName("Pum Pum Bear");
-                        Fantasy_Player.setEnemyCheck(0);
-                        context.startActivity(newStory);
-                    }
-                    if(storyName.equals((storyTimeClass3))){
-                        Intent newStory =new Intent(context, Character_Select.class);
-                        context.startActivity(newStory);
-
+                    String storyTimeClass = "Rhothomir's Crown";
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    if(storyName.equals(storyTimeClass)) {
+                        builder.setMessage("Do you want to start the adventure " +storyName+"?");
+                    builder.setCancelable(true);
+                    builder.setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent newStory = new Intent(context, Character_Select.class);
+                            context.startActivity(newStory);
+                        }
+                    });
+                    builder.show();
                     }
                 }
             });
@@ -88,7 +73,6 @@ public class StoryRecyclerViewAdapter extends RecyclerView.Adapter<StoryRecycler
 
         public class StoryViewHolder extends RecyclerView.ViewHolder {
             TextView txtStory_Name;
-
 
             public StoryViewHolder(View view) {
                 super(view);

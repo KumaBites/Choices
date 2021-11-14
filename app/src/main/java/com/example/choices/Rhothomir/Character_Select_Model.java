@@ -1,4 +1,4 @@
-package com.example.choices.Rhothomir.CharacterSelectRecyclerView;
+package com.example.choices.Rhothomir;
 
 public class Character_Select_Model {
     public String select_name;

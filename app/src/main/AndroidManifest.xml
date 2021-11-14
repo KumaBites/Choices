@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Rhothomir.Credits"></activity>
-        <activity android:name=".Rhothomir.CharacterSelectRecyclerView.Character_Select" />
+        <activity android:name=".Rhothomir.Character_Select" />
         <activity android:name=".Rhothomir.Rhothomir" />
-        <activity android:name=".Fantasy.Fantasy_Battle" />
-        <activity android:name=".Fantasy.Fantasy_Event" />
+        <activity android:name=".Rhothomir.Fantasy_Battle" />
+        <activity android:name=".Rhothomir.Fantasy_Event" />
         <activity android:name=".GettingReady.Alan_Event" />
         <activity android:name=".Story_Select">
             <intent-filter>

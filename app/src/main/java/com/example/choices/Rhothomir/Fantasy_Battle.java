@@ -1,4 +1,4 @@
-package com.example.choices.Fantasy;
+package com.example.choices.Rhothomir;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.choices.ENTITY.Fantasy_Enemy;
@@ -31,6 +33,7 @@ public class Fantasy_Battle extends AppCompatActivity {
     private int pbattle_result, eBattle_result;
     private  int enemyId;
     private double nextEventId;
+    private ImageView player, enemy;
     private TextView pHealth, pAttack, pDefense, eHealth, eAttack,eDefense ,pName,eName;
     EventsDatabase eDatabase;
     MediaPlayer mediaPlayer;
@@ -46,11 +49,13 @@ public class Fantasy_Battle extends AppCompatActivity {
         pHealth = findViewById(R.id.pHealthView);
         pAttack =findViewById(R.id.pAttack);
         pDefense = findViewById(R.id.pDefense);
+        player = findViewById(R.id.imageView);
 
         eName =findViewById(R.id.eNameView);
         eHealth =findViewById(R.id.eHealthView);
         eAttack =findViewById(R.id.eAttackView);
         eDefense =findViewById(R.id.eDefenseView);
+        enemy = findViewById(R.id.imageView2);
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         getEnemyCallable newEvent = new getEnemyCallable();
@@ -71,17 +76,22 @@ public class Fantasy_Battle extends AppCompatActivity {
             Fantasy_Enemy_Encounter.setEnemy_defense(newEnemy.getEnemy_defense());
             Fantasy_Enemy_Encounter.setEnemy_name(newEnemy.getEnemy_name());
             Fantasy_Enemy_Encounter.setNextEventId(newEnemy.getNextEventId());
+            Fantasy_Enemy_Encounter.setUri(newEnemy.getUri());
         }
-        pName.setText(Fantasy_Player.getName());
-        player_health = Fantasy_Player.getHeath();
-        player_attack = Fantasy_Player.getAttack();
-        player_defense = Fantasy_Player.getDefense();
+        pName.setText(String.valueOf(Rhothomir_Player.getName()));
+        player_health = Rhothomir_Player.getEndurance();
+        player_attack =Rhothomir_Player.getStrength();
+        player_defense = Rhothomir_Player.getWillpower();
+        player.setImageResource(Rhothomir_Player.getPicturUrl());
         nextEventId = Fantasy_Enemy_Encounter.getNextEventId();
 
         eName.setText(Fantasy_Enemy_Encounter.getEnemy_name());
         enemy_health = Fantasy_Enemy_Encounter.getEnemy_health();
         enemy_attack = Fantasy_Enemy_Encounter.getEnemy_attack();
         enemy_defense= Fantasy_Enemy_Encounter.getEnemy_defense();
+
+       // int id = getResources().getIdentifier("com.examples.choices:drawable/" + Fantasy_Enemy_Encounter.getUri(), null, null);
+       // enemy.setImageResource(id);
 
         pHealth.setText(String.valueOf(player_health));
         pAttack.setText(String.valueOf(player_attack));
@@ -93,8 +103,7 @@ public class Fantasy_Battle extends AppCompatActivity {
 
     }
     public void commenceAttack(View view) {
-        playerAttacks();
-        enemyAttacks();
+
         battleCheck();
 
 
@@ -106,7 +115,7 @@ public class Fantasy_Battle extends AppCompatActivity {
         enemy_number = new Random();
         player_added_attack = player_number.nextInt(6);
         enemy_added_defense = enemy_number.nextInt(6);
-        player_total_attack = Fantasy_Player.getAttack() + player_added_attack;
+        player_total_attack = Rhothomir_Player.getStrength() + player_added_attack;
         enemy_total_defense = Fantasy_Enemy_Encounter.getEnemy_defense() + enemy_added_defense;
         pbattle_result = enemy_total_defense - player_total_attack;
         enemy_health = enemy_health - Math.abs(pbattle_result);
@@ -124,20 +133,20 @@ public class Fantasy_Battle extends AppCompatActivity {
         enemy_total_attack = enemy_attack + enemy_added_attack;
         eBattle_result = player_total_defense - enemy_total_attack;
         player_health = player_health - Math.abs(eBattle_result);
-        Fantasy_Player.setHeath(player_health);
-        pHealth.setText(String.valueOf(Fantasy_Player.getHeath()));
+        Rhothomir_Player.setEndurance(player_health);
+        pHealth.setText(String.valueOf(Rhothomir_Player.getEndurance()));
   }
   public void battleCheck(){
       final Intent died = new Intent(this, Story_Select.class);
       final Intent survive = new Intent(this, Fantasy_Event.class);
       final int eHCheck = Fantasy_Enemy_Encounter.getEnemy_health();
-      final int pHCheck =Fantasy_Player.getHeath();
+      final int pHCheck = Rhothomir_Player.getEndurance();
 
       if ((eHCheck > 0 && pHCheck > 0)){
           playerAttacks();
           enemyAttacks();
           AlertDialog.Builder builder = new AlertDialog.Builder(this);
-          builder.setMessage("You did " + pbattle_result + " damage but the " + Fantasy_Enemy_Encounter.getEnemy_name() + " did " + eBattle_result + "damage!");
+          builder.setMessage("You did " + Math.abs(pbattle_result) + " damage but the " + Fantasy_Enemy_Encounter.getEnemy_name() + " did " + Math.abs(eBattle_result) + " damage!");
           builder.setCancelable(false);
           builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
               @Override
@@ -155,7 +164,7 @@ public class Fantasy_Battle extends AppCompatActivity {
               @Override
               public void onClick(DialogInterface dialog, int which) {
                   mediaPlayer.release();;
-                  Fantasy_Player.setCurrentEventID(nextEventId);
+                  Rhothomir_Player.setCurrentEventID(nextEventId);
                   startActivity(died);
                   finish();
 
@@ -166,13 +175,13 @@ public class Fantasy_Battle extends AppCompatActivity {
       else if(eHCheck <= 0){
 
           AlertDialog.Builder wonBuilder = new AlertDialog.Builder(this);
-          wonBuilder.setMessage("You have won!! Congratulations! One with the adventure");
+          wonBuilder.setMessage("You have won!! Congratulations! On with the adventure");
           wonBuilder.setCancelable(false);
           wonBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
               @Override
               public void onClick(DialogInterface dialog, int which) {
                   mediaPlayer.release();
-                  Fantasy_Player.setEnemyCheck(0);
+                  Rhothomir_Player.setEnemyCheck(0);
                   startActivity(survive);
                   finish();
 

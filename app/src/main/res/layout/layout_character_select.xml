@@ -3,12 +3,14 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     android:orientation="vertical">
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
-        android:layout_width="398dp"
-        android:layout_height="471dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="5dp"
         android:textSize="14sp"
@@ -16,53 +18,18 @@
         card_view:contentPadding="10dp">
 
         <RelativeLayout
-            android:layout_width="376dp"
-            android:layout_height="451dp"
-            android:background="@drawable/stone">
-            <TextView
-                android:id="@+id/character_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="25dp"
-                android:layout_alignParentTop="true"
-
-                android:textStyle="bold" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white">
 
             <TextView
                 android:id="@+id/race"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/character_name"
-                android:paddingLeft="25dp"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/background"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/race"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/strength"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/background"
-                android:paddingLeft="25dp"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/willpower"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/strength"
-                android:paddingLeft="25dp"
-                android:textColor="@android:color/white"
+                android:layout_marginTop="0dp"
+                android:paddingLeft="50dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold" />
 
             <TextView
@@ -70,9 +37,52 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/willpower"
-                android:paddingLeft="25dp"
+                android:layout_marginTop="0dp"
+                android:paddingLeft="50dp"
                 android:paddingRight="25dp"
-                android:textColor="@android:color/holo_green_dark"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/willpower"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/strength"
+                android:layout_marginTop="0dp"
+                android:paddingLeft="50dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/strength"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/background"
+                android:layout_marginTop="0dp"
+                android:paddingLeft="50dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/background"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/race"
+                android:layout_marginTop="0dp"
+                android:paddingLeft="50dp"
+                android:paddingRight="35dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/character_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="43dp"
+
+                android:paddingLeft="50dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold" />
 
             <ImageView
@@ -81,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/endurance"
                 android:onClick="quitToMain"
-         />
+                android:paddingLeft="25dp" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

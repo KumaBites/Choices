@@ -11,6 +11,15 @@ public class Fantasy_Enemy {
     private int enemy_attack;
     private int enemy_defense;
     private double nextEventId;
+    private String uri;
+
+    public String getUri() {
+        return uri;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
 
     public String getEnemy_name() {
         return enemy_name;
