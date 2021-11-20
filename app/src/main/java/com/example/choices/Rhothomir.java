@@ -1,4 +1,4 @@
-package com.example.choices.Rhothomir;
+package com.example.choices;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.choices.ENTITY.Rhothomir_Player_Database;
-import com.example.choices.EventsDatabase;
-import com.example.choices.R;
 
 import java.util.List;
 import java.util.concurrent.Callable;

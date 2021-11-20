@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/lwood3"
-    tools:context=".Story_Select">
+    tools:context=".StorySelect">
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="45dp"
-        android:layout_marginBottom="33dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
         android:onClick="quitToMain"
         android:text="@string/quitApp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,27 +22,26 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="254dp"
-        android:layout_height="0dp"
+        android:layout_width="325dp"
+        android:layout_height="78dp"
         android:layout_marginTop="65dp"
         android:layout_marginBottom="23dp"
+        android:background="@drawable/banner"
         android:text="@string/choose"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/storyRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.recyclerview.widget.RecyclerView
-
         android:id="@+id/storyRecyclerView"
-        android:layout_width="346dp"
-        android:layout_height="423dp"
-        android:layout_marginBottom="49dp"
-        android:layout_marginEnd="41dp"
-        android:layout_marginLeft="41dp"
-        android:layout_marginRight="41dp"
+        android:layout_width="317dp"
+        android:layout_height="426dp"
         android:layout_marginStart="41dp"
-
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="49dp"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

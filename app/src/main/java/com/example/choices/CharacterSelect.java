@@ -1,4 +1,4 @@
-package com.example.choices.Rhothomir;
+package com.example.choices;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,9 +10,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.choices.ENTITY.Rhothomir_Player_Database;
-import com.example.choices.EventsDatabase;
-import com.example.choices.R;
-import com.example.choices.Story_Select;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,27 +19,33 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class Character_Select extends AppCompatActivity {
+public class CharacterSelect extends AppCompatActivity {
     private RecyclerView character_view;
-    private List<Character_Select_Model> currentCharacterList;
+    private List<CharacterSelectModel> currentCharacterList;
     private List<Rhothomir_Player_Database> databaseList;
     private CharacterRecyclerViewAdapter eAdapter;
     private String select_name,select_race,select_background,oldUriString, select_strength,select_endurance,select_willpower;
     public int oldSelect_strength,oldSelect_endurance,oldSelect_willpower;
     public String select_uri;
+    public static CharacterSelect activityHandle = null;
     EventsDatabase eDatabase;
+
 
     private static Activity character_select_activity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        activityHandle = this;
         setContentView(R.layout.activity_character__select);
         character_view =findViewById(R.id.character_select_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         character_view.setLayoutManager(linearLayoutManager);
 
+
         //Gets database connection
         eDatabase = EventsDatabase.getDatabase(this);
+
+
 
         //Creates new thread and new callable to get characters from the database, and a future to get the data
         ExecutorService executorService = Executors.newSingleThreadExecutor();
@@ -76,7 +79,7 @@ public class Character_Select extends AppCompatActivity {
 
             select_uri =  RPD.getUri();
 
-            currentCharacterList.add(new Character_Select_Model(select_name,select_race,select_background,select_strength,select_endurance, select_willpower,select_uri));
+            currentCharacterList.add(new CharacterSelectModel(select_name,select_race,select_background,select_strength,select_endurance, select_willpower,select_uri));
         }
         eAdapter = new CharacterRecyclerViewAdapter(currentCharacterList, this);
         character_view.setAdapter(eAdapter);
@@ -84,6 +87,10 @@ public class Character_Select extends AppCompatActivity {
     }
 
     //A method creates a callable to get all the characters to populate the card view
+
+    /**
+     *
+     */
     private class getEventCallable implements Callable<List<Rhothomir_Player_Database>>
     {
         List<Rhothomir_Player_Database> rList;
@@ -95,9 +102,23 @@ public class Character_Select extends AppCompatActivity {
 
         }
     }
+    //Returns the instance of the current activity which will be used in the recyclerview to destroy the current activity
+
+    /**
+     *
+     * @return
+     */
+    public static CharacterSelect getInstance(){
+        return activityHandle;
+    }
     //Quits to main menu
+
+    /**
+     *
+     * @param view
+     */
     public void quitToMainMenu(View view){
-        Intent quit = new Intent(this, Story_Select.class);
+        Intent quit = new Intent(this, StorySelect.class);
         startActivity(quit);
         finish();
     }

@@ -1,6 +1,6 @@
-package com.example.choices.Rhothomir;
+package com.example.choices;
 
-public class Character_Select_Model {
+public class CharacterSelectModel {
     public String select_name;
     public String select_race;
     public String select_background;
@@ -9,7 +9,7 @@ public class Character_Select_Model {
     public String select_willpower;
     public String select_uri;
 
-    public Character_Select_Model(String select_name,String select_race,String select_background, String select_strength, String select_endurance, String select_willpower,String select_uri)
+    public CharacterSelectModel(String select_name, String select_race, String select_background, String select_strength, String select_endurance, String select_willpower, String select_uri)
 
     {
         this.select_name = select_name;

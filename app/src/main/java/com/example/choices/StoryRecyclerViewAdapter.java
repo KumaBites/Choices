@@ -7,29 +7,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.choices.Rhothomir.Character_Select;
-import com.example.choices.Rhothomir.Fantasy_Event;
-import com.example.choices.Rhothomir.Rhothomir_Player;
 
 import java.util.List;
 
 
 public class StoryRecyclerViewAdapter extends RecyclerView.Adapter<StoryRecyclerViewAdapter.StoryViewHolder> {
-        private List<Story_Select_Model> storyList;
+        //Local variables to store list data and context.
+        private List<StorySelectModel> storyList;
         Context context;
 
 
-
-        public StoryRecyclerViewAdapter(List<Story_Select_Model> storyList, Context context) {
+        //Take the List and the context and stores them in local variables.
+        public StoryRecyclerViewAdapter(List<StorySelectModel> storyList, Context context) {
             this.storyList = storyList;
             this.context = context;
         }
 
+        //Gets teh layout for the activity.
         @Override
         public StoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             //inflate the layout file
@@ -57,8 +55,11 @@ public class StoryRecyclerViewAdapter extends RecyclerView.Adapter<StoryRecycler
                     builder.setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Intent newStory = new Intent(context, Character_Select.class);
+                            Intent newStory = new Intent(context, CharacterSelect.class);
                             context.startActivity(newStory);
+                            //Removes from the back stack and destroys it
+                            StorySelect.getInstance().finish();
+
                         }
                     });
                     builder.show();

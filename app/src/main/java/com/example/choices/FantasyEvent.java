@@ -1,4 +1,4 @@
-package com.example.choices.Rhothomir;
+package com.example.choices;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -10,9 +10,6 @@ import android.widget.TextView;
 
 import com.example.choices.ENTITY.Fantasy_Enemy;
 import com.example.choices.ENTITY.Fantasy_Events;
-import com.example.choices.EventsDatabase;
-import com.example.choices.R;
-import com.example.choices.Story_Select;
 
 
 import java.util.ArrayList;
@@ -29,17 +26,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-public class Fantasy_Event extends AppCompatActivity {
+public class FantasyEvent extends AppCompatActivity {
     private RecyclerView event;
-    private List<Fantasy_EventModel> currentEventList;
+    private List<FantasyEventModel> currentEventList;
+    private List<String> currentEventdescription;
     private List<Fantasy_Events> allStoryEventList;
     private List<Fantasy_Enemy> enemyEventList;
-    private Fantasy_EventRecyclerViewAdapter eAdapter;
-    private TextView descrption;
+    private FantasyEventRecyclerViewAdapter eAdapter;
+    private TextView eventTitle, eventDescription ;
     private int enemyId, enemyCheck;
     private double currentEventID ,nextID, nextID2,nextID3;
     EventsDatabase eDatabase;
-    private static Activity activity;
+    private static FantasyEvent activity;
 
 
     @Override
@@ -47,7 +45,8 @@ public class Fantasy_Event extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
         event = findViewById(R.id.EventRecyclerView);
-        descrption = findViewById(R.id.Description);
+        eventDescription = findViewById(R.id.EventDescription);
+        eventTitle = findViewById(R.id.EventTitle);
         currentEventID = Rhothomir_Player.getCurrentEventID();
         eDatabase = EventsDatabase.getDatabase(this);
         currentEventID = Rhothomir_Player.getCurrentEventID();
@@ -61,7 +60,7 @@ public class Fantasy_Event extends AppCompatActivity {
 
         }
         else if(enemyCheck==1){
-            Intent battle = new Intent(this, Fantasy_Battle.class);
+            Intent battle = new Intent(this, FantasyBattle.class);
             startActivity(battle);
             finish();
 
@@ -96,28 +95,30 @@ public class Fantasy_Event extends AppCompatActivity {
 
                 enemyCheck = EM.getEnemyCheck();
                 Rhothomir_Player.setEnemyCheck(enemyCheck);
+
                 enemyId = EM.getEnemyId();
-                Fantasy_Enemy_Encounter.setEnemyId(enemyId);
-                descrption.setText(EM.getFantasyEventDescription());
-                String eventName = EM.getFantasyEventName();
-                Double eventID = EM.getFantasyEventId();
-                String eventDescription = EM.getFantasyEventDescription();
+                FantasyEnemyEncounter.setEnemyId(enemyId);
+
+               eventTitle.setText(EM.getFantasyEventName());
+               eventDescription.setText(EM.getFantasyEventDescription());
+
+
+
                 String eventChoice1 = EM.getFantasyEventChoice1();
                 String eventChoice2 = EM.getFantasyEventChoice2();
                 String eventChoice3 = EM.getFantasyEventChoice3();
-                double eventChoiceID1 = EM.getFantasyNextEventID1();
-                double eventChoiceID2 = EM.getFantasyNextEventID2();
-                double eventChoiceID3 = EM.getFantasyNextEventID3();
-                currentEventList.add(new Fantasy_EventModel(eventName, eventID, eventDescription, eventChoiceID1, eventChoice1, eventChoiceID2, eventChoice2, eventChoiceID3, eventChoice3));
+
+                currentEventList.add(new FantasyEventModel( eventChoice1, eventChoice2, eventChoice3));
             }
 
-            eAdapter = new Fantasy_EventRecyclerViewAdapter(currentEventList, this);
+            eAdapter = new FantasyEventRecyclerViewAdapter(currentEventList, this);
             event.setAdapter(eAdapter);
+
 
         }
     }
     private void storyEndAlert() {
-        final Intent finish = new Intent(this, Story_Select.class);
+        final Intent finish = new Intent(this, StorySelect.class);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("You have completed Alan's dilemma! Why not try one of the other stories?");
@@ -148,7 +149,7 @@ public class Fantasy_Event extends AppCompatActivity {
 
     public void quit (View view){
 
-        Intent quit = new Intent(this,Story_Select.class);
+        Intent quit = new Intent(this, StorySelect.class);
         startActivity(quit);
         finish();
 
@@ -158,6 +159,7 @@ public class Fantasy_Event extends AppCompatActivity {
     public void onBackPressed() {
 
     }
+    //Gets a handle on the current activity to be destroyed in the adapter view
     public static Activity getInstance(){
         return  activity;
     }

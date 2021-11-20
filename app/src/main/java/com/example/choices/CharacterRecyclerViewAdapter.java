@@ -1,4 +1,4 @@
-package com.example.choices.Rhothomir;
+package com.example.choices;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,20 +14,16 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.choices.R;
-import com.example.choices.Story_Select;
-
-
 import java.util.List;
 
 
 public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<CharacterRecyclerViewAdapter.CharacterSelectViewHolder> {
-        private List<Character_Select_Model> character_select_modelList;
+        private List<CharacterSelectModel> character_select_modelList;
         Context context;
 
 
 
-        public CharacterRecyclerViewAdapter(List<Character_Select_Model> character_select_modelList, Context context) {
+        public CharacterRecyclerViewAdapter(List<CharacterSelectModel> character_select_modelList, Context context) {
             this.character_select_modelList = character_select_modelList;
             this.context = context;
         }
@@ -60,9 +56,11 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
             Rhothomir_Player.setEndurance(newEndurance);
             Rhothomir_Player.setCurrentEventID(1.0);
             Rhothomir_Player.setPicturUrl(id);
-
-            Intent newIntent = new Intent(context, Fantasy_Event.class);
+            //Starts new activity
+            Intent newIntent = new Intent(context, FantasyEvent.class);
             context.startActivity(newIntent);
+            //Destroys activity
+            CharacterSelect.getInstance().finish();
         }
         @Override
         public void onBindViewHolder(CharacterSelectViewHolder holder, final int position) {

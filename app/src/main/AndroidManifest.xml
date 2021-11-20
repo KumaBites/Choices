@@ -9,13 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Rhothomir.Credits"></activity>
-        <activity android:name=".Rhothomir.Character_Select" />
-        <activity android:name=".Rhothomir.Rhothomir" />
-        <activity android:name=".Rhothomir.Fantasy_Battle" />
-        <activity android:name=".Rhothomir.Fantasy_Event" />
+        <activity android:name=".Credits"></activity>
+        <activity android:name=".CharacterSelect" />
+        <activity android:name=".Rhothomir" />
+        <activity android:name=".FantasyBattle" />
+        <activity android:name=".FantasyEvent" />
         <activity android:name=".GettingReady.Alan_Event" />
-        <activity android:name=".Story_Select">
+        <activity android:name=".StorySelect">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

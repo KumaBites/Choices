@@ -1,4 +1,4 @@
-package com.example.choices.Rhothomir;
+package com.example.choices;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.choices.R;
-
 
 import java.util.List;
 
@@ -18,26 +16,26 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-public class Fantasy_EventRecyclerViewAdapter extends RecyclerView.Adapter<Fantasy_EventRecyclerViewAdapter.EventViewHolder> {
+public class FantasyEventRecyclerViewAdapter extends RecyclerView.Adapter<FantasyEventRecyclerViewAdapter.EventViewHolder> {
 
-    private List<Fantasy_EventModel> eventList;
+    private List<FantasyEventModel> eventList;
     Context context;
 
-    public Fantasy_EventRecyclerViewAdapter(List<Fantasy_EventModel> eventList, Context context) {
+    public FantasyEventRecyclerViewAdapter(List<FantasyEventModel> eventList, Context context) {
         this.eventList = eventList;
         this.context = context;
     }
 
     @Override
-    public Fantasy_EventRecyclerViewAdapter.EventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FantasyEventRecyclerViewAdapter.EventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflate the layout file
         View EventModelView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_event, parent, false);
-        Fantasy_EventRecyclerViewAdapter.EventViewHolder gvh = new Fantasy_EventRecyclerViewAdapter.EventViewHolder(EventModelView);
+        FantasyEventRecyclerViewAdapter.EventViewHolder gvh = new FantasyEventRecyclerViewAdapter.EventViewHolder(EventModelView);
         return gvh;
     }
 
     @Override
-    public void onBindViewHolder(Fantasy_EventRecyclerViewAdapter.EventViewHolder holder, final int position) {
+    public void onBindViewHolder(FantasyEventRecyclerViewAdapter.EventViewHolder holder, final int position) {
 
         holder.eventChoice1.setText("Choice 1:"+(eventList.get(position).getEventChoice1()));
         holder.eventChoice2.setText("Choice 2 :"+(eventList.get(position).getEventChoice2()));
@@ -48,10 +46,7 @@ public class Fantasy_EventRecyclerViewAdapter extends RecyclerView.Adapter<Fanta
                 String eventName1 = eventList.get(position).getEventChoice1();
                 Toast.makeText(context, eventName1 + " is selected", Toast.LENGTH_SHORT).show();
                 Rhothomir_Player.setCurrentEventID(Rhothomir_Player.getNextEventID1());
-                displayResult1();
-
-
-
+                displayResult(Rhothomir_Player.getEventToast1());
 
             }
         });
@@ -61,7 +56,7 @@ public class Fantasy_EventRecyclerViewAdapter extends RecyclerView.Adapter<Fanta
                 String eventName2 = eventList.get(position).getEventChoice2();
                 Toast.makeText(context, eventName2 + " is selected", Toast.LENGTH_SHORT).show();
                 Rhothomir_Player.setCurrentEventID(Rhothomir_Player.getNextEventID2());
-                displayResult2();
+                displayResult(Rhothomir_Player.getEventToast2());
             }
         });
         holder.eventChoice3.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +65,7 @@ public class Fantasy_EventRecyclerViewAdapter extends RecyclerView.Adapter<Fanta
                 String eventName3 = eventList.get(position).getEventChoice3();
                 Toast.makeText(context, eventName3 + " is selected", Toast.LENGTH_SHORT).show();
                Rhothomir_Player.setCurrentEventID(Rhothomir_Player.getNextEventID3());
-                displayResult3();
+                displayResult(Rhothomir_Player.getEventToast3());
             }
         });
     }
@@ -93,48 +88,25 @@ public class Fantasy_EventRecyclerViewAdapter extends RecyclerView.Adapter<Fanta
             eventChoice3 = view.findViewById(R.id.choice_name3);
         }
     }
-    private void displayResult1() {
+    //Takes in the Toast message as String and displays it, it then starts the new activity
+    private void displayResult(String Toast) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setMessage(Rhothomir_Player.getEventToast1());
+        builder.setMessage(Toast);
         builder.setCancelable(false);
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Fantasy_Event.getInstance().finish();
-                Intent intent = new Intent(context, Fantasy_Event.class);
+                FantasyEvent.getInstance().finish();
+                Intent intent = new Intent(context, FantasyEvent.class);
                 context.startActivity(intent);
+                //Destroys the event after it is used
+                FantasyEvent.getInstance().finish();
             }
         });
         builder.show();
     }
-    private void displayResult2() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setMessage(Rhothomir_Player.getEventToast2());
-        builder.setCancelable(false);
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
 
-                Intent intent = new Intent(context, Fantasy_Event.class);
-                Fantasy_Event.getInstance().finish();
-                context.startActivity(intent);
-            }
-        });
-        builder.show();
-    }
-    private void displayResult3() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setMessage(Rhothomir_Player.getEventToast3());
-        builder.setCancelable(false);
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Fantasy_Event.getInstance().finish();
-                Intent intent = new Intent(context, Fantasy_Event.class);
-                context.startActivity(intent);
-            }
-        });
-        builder.show();
-    }
+
+
 }
 

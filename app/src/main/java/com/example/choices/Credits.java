@@ -1,13 +1,10 @@
-package com.example.choices.Rhothomir;
+package com.example.choices;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
-import com.example.choices.R;
-import com.example.choices.Story_Select;
 
 public class Credits extends AppCompatActivity {
 
@@ -26,7 +23,7 @@ public class Credits extends AppCompatActivity {
 
 
     public void quitToMainMenu(View view){
-        Intent quit = new Intent(this, Story_Select.class);
+        Intent quit = new Intent(this, StorySelect.class);
         startActivity(quit);
         finish();
     }

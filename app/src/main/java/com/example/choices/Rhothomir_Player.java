@@ -1,4 +1,4 @@
-package com.example.choices.Rhothomir;
+package com.example.choices;
 
 public class Rhothomir_Player {
     private static int character_id;

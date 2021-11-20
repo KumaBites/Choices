@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Rhothomir.Rhothomir">
+    tools:context=".Rhothomir">
 
     <TextView
         android:id="@+id/chark"

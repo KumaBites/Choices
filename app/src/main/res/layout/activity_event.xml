@@ -8,29 +8,59 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/EventRecyclerView"
-        android:layout_width="260dp"
-        android:layout_height="437dp"
+        android:layout_width="251dp"
+        android:layout_height="155dp"
         android:layout_marginStart="54dp"
         android:layout_marginEnd="54dp"
-        android:layout_marginBottom="43dp"
+        android:layout_marginBottom="68dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
     <TextView
-        android:id="@+id/Description"
+        android:id="@+id/EventDescription"
+        android:layout_width="257dp"
+        android:layout_height="322dp"
+        android:layout_marginStart="77dp"
+        android:layout_marginEnd="77dp"
+        android:layout_marginBottom="32dp"
+        android:text="TextView"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/EventRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
+    <TextView
+        android:id="@+id/EventTitle"
         android:layout_width="325dp"
         android:layout_height="78dp"
         android:layout_marginTop="52dp"
         android:layout_marginBottom="182dp"
         android:background="@drawable/banner"
-        android:text="TextView"
-        android:textAlignment="center"
         android:gravity="center"
+        android:textAlignment="center"
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/goBackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:onClick="quit"
+        android:text="@string/quitApp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

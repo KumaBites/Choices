@@ -1,12 +1,12 @@
 package com.example.choices;
 
-public class Story_Select_Model {
+public class StorySelectModel {
 
     private String storyName;
 
 
 
-    public Story_Select_Model(String storyName){
+    public StorySelectModel(String storyName){
 
         this.storyName =  storyName;
     }

@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.example.choices.ENTITY.Events;
 import com.example.choices.EventsDatabase;
 import com.example.choices.R;
-import com.example.choices.Story_Select;
+import com.example.choices.StorySelect;
 
 
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class Alan_Event extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
         event = findViewById(R.id.EventRecyclerView);
-        descrption = findViewById(R.id.Description);
+        descrption = findViewById(R.id.EventTitle);
         currentEventID = Alan_Player.getCurrentEventID();
         eDatabase = EventsDatabase.getDatabase(this);
         currentEventID = Alan_Player.getCurrentEventID();
@@ -100,7 +100,7 @@ public class Alan_Event extends AppCompatActivity {
         }
     }
     private void storyEndAlert() {
-        final Intent finish = new Intent(this, Story_Select.class);
+        final Intent finish = new Intent(this, StorySelect.class);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("You have completed Alan's dilemma! Why not try one of the other stories?");
@@ -131,7 +131,7 @@ public class Alan_Event extends AppCompatActivity {
 
     public void quit (View view){
 
-        Intent quit = new Intent(this,Story_Select.class);
+        Intent quit = new Intent(this, StorySelect.class);
         startActivity(quit);
         finish();
 

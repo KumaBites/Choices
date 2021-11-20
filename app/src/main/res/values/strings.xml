@@ -8,4 +8,6 @@
     <string name="battle">Battle!</string>
     <string name="fight">Fight!</string>
     <string name="ChooseYourCharacter">Choose Your Character</string>
+    <string name="goBack">Go Back</string>
+    <string name="back">Back</string>
 </resources>
