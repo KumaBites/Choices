@@ -37,34 +37,34 @@ public class Rhothomir extends AppCompatActivity {
 
         allPlayers = result;
         for (Rhothomir_Player_Database RPD : allPlayers) {
-            Rhothomir_Player.setCharacter_id(RPD.getCharacter_id());
-            Rhothomir_Player.setName((RPD.getName()));
-            Rhothomir_Player.setRace(RPD.getRace());
-            Rhothomir_Player.setBackground(RPD.getBackground());
-            Rhothomir_Player.setEndurance(RPD.getEndurance());
-            Rhothomir_Player.setStrength(RPD.getStrength());
-            Rhothomir_Player.setWillpower(RPD.getWillpower());
+            RhothomirPlayer.setCharacter_id(RPD.getCharacter_id());
+            RhothomirPlayer.setName((RPD.getName()));
+            RhothomirPlayer.setRace(RPD.getRace());
+            RhothomirPlayer.setBackground(RPD.getBackground());
+            RhothomirPlayer.setEndurance(RPD.getEndurance());
+            RhothomirPlayer.setStrength(RPD.getStrength());
+            RhothomirPlayer.setWillpower(RPD.getWillpower());
 
             character = findViewById(R.id.chark);
-            character.setText(String.valueOf(Rhothomir_Player.getCharacter_id()));
+            character.setText(String.valueOf(RhothomirPlayer.getCharacter_id()));
 
             name = findViewById(R.id.name);
-            name.setText(Rhothomir_Player.getName());
+            name.setText(RhothomirPlayer.getName());
 
             race = findViewById(R.id.race);
-            race.setText(Rhothomir_Player.getRace());
+            race.setText(RhothomirPlayer.getRace());
 
             back = findViewById(R.id.back);
-            back.setText(Rhothomir_Player.getBackground());
+            back.setText(RhothomirPlayer.getBackground());
 
             will = findViewById(R.id.wil);
-            will.setText(String.valueOf(Rhothomir_Player.getWillpower()));
+            will.setText(String.valueOf(RhothomirPlayer.getWillpower()));
 
             end = findViewById(R.id.endu);
-            end.setText(String.valueOf(Rhothomir_Player.getEndurance()));
+            end.setText(String.valueOf(RhothomirPlayer.getEndurance()));
 
             health = findViewById(R.id.heath);
-            health.setText(String.valueOf(Rhothomir_Player.getStrength()));
+            health.setText(String.valueOf(RhothomirPlayer.getStrength()));
         }
     }
 

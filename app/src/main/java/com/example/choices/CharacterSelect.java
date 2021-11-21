@@ -121,5 +121,6 @@ public class CharacterSelect extends AppCompatActivity {
         Intent quit = new Intent(this, StorySelect.class);
         startActivity(quit);
         finish();
+        //overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left);
     }
 }

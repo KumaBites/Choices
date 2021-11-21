@@ -45,8 +45,8 @@ public class FantasyEventRecyclerViewAdapter extends RecyclerView.Adapter<Fantas
             public void onClick(View v) {
                 String eventName1 = eventList.get(position).getEventChoice1();
                 Toast.makeText(context, eventName1 + " is selected", Toast.LENGTH_SHORT).show();
-                Rhothomir_Player.setCurrentEventID(Rhothomir_Player.getNextEventID1());
-                displayResult(Rhothomir_Player.getEventToast1());
+                RhothomirPlayer.setCurrentEventID(RhothomirPlayer.getNextEventID1());
+                displayResult(RhothomirPlayer.getEventToast1());
 
             }
         });
@@ -55,8 +55,8 @@ public class FantasyEventRecyclerViewAdapter extends RecyclerView.Adapter<Fantas
             public void onClick(View v) {
                 String eventName2 = eventList.get(position).getEventChoice2();
                 Toast.makeText(context, eventName2 + " is selected", Toast.LENGTH_SHORT).show();
-                Rhothomir_Player.setCurrentEventID(Rhothomir_Player.getNextEventID2());
-                displayResult(Rhothomir_Player.getEventToast2());
+                RhothomirPlayer.setCurrentEventID(RhothomirPlayer.getNextEventID2());
+                displayResult(RhothomirPlayer.getEventToast2());
             }
         });
         holder.eventChoice3.setOnClickListener(new View.OnClickListener() {
@@ -64,8 +64,8 @@ public class FantasyEventRecyclerViewAdapter extends RecyclerView.Adapter<Fantas
             public void onClick(View v) {
                 String eventName3 = eventList.get(position).getEventChoice3();
                 Toast.makeText(context, eventName3 + " is selected", Toast.LENGTH_SHORT).show();
-               Rhothomir_Player.setCurrentEventID(Rhothomir_Player.getNextEventID3());
-                displayResult(Rhothomir_Player.getEventToast3());
+               RhothomirPlayer.setCurrentEventID(RhothomirPlayer.getNextEventID3());
+                displayResult(RhothomirPlayer.getEventToast3());
             }
         });
     }
@@ -99,6 +99,7 @@ public class FantasyEventRecyclerViewAdapter extends RecyclerView.Adapter<Fantas
                 FantasyEvent.getInstance().finish();
                 Intent intent = new Intent(context, FantasyEvent.class);
                 context.startActivity(intent);
+                FantasyEvent.getInstance().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 //Destroys the event after it is used
                 FantasyEvent.getInstance().finish();
             }

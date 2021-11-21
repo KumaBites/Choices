@@ -48,17 +48,19 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
             newEndurance =Integer.parseInt(endurance);
             newWillpower = Integer.parseInt(willpower);
             //Set Player Stats
-            Rhothomir_Player.setName(character);
-            Rhothomir_Player.setRace(imageCheck);
-            Rhothomir_Player.setBackground(character_select_modelList.get(position).getSelect_background());
-            Rhothomir_Player.setStrength(newStrength);
-            Rhothomir_Player.setWillpower(newWillpower);
-            Rhothomir_Player.setEndurance(newEndurance);
-            Rhothomir_Player.setCurrentEventID(1.0);
-            Rhothomir_Player.setPicturUrl(id);
+            RhothomirPlayer.setName(character);
+            RhothomirPlayer.setRace(imageCheck);
+            RhothomirPlayer.setBackground(character_select_modelList.get(position).getSelect_background());
+            RhothomirPlayer.setStrength(newStrength);
+            RhothomirPlayer.setWillpower(newWillpower);
+            RhothomirPlayer.setEndurance(newEndurance);
+            RhothomirPlayer.setCurrentEventID(1.0);
+            RhothomirPlayer.setPicturUrl(id);
             //Starts new activity
             Intent newIntent = new Intent(context, FantasyEvent.class);
             context.startActivity(newIntent);
+            CharacterSelect.getInstance().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             //Destroys activity
             CharacterSelect.getInstance().finish();
         }

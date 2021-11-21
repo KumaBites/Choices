@@ -25,14 +25,12 @@ public class StorySelect extends AppCompatActivity {
         activityHandle = this;
 
 
-
         //getting the recyclerview from xml
         mRecyclerView = findViewById(R.id.storyRecyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
 
         //Populate the list with the game names
-
         debtListArray = new ArrayList<>();
         debtListArray.add(new StorySelectModel("Rhothomir's Crown"));
 
@@ -47,6 +45,7 @@ public class StorySelect extends AppCompatActivity {
     {
 
         System.exit(0);
+
     }
 
     //Returns the instance of the current activity which will be used in the recyclerview to destroy the current activity

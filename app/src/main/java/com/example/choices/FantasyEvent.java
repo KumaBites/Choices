@@ -47,10 +47,10 @@ public class FantasyEvent extends AppCompatActivity {
         event = findViewById(R.id.EventRecyclerView);
         eventDescription = findViewById(R.id.EventDescription);
         eventTitle = findViewById(R.id.EventTitle);
-        currentEventID = Rhothomir_Player.getCurrentEventID();
+        currentEventID = RhothomirPlayer.getCurrentEventID();
         eDatabase = EventsDatabase.getDatabase(this);
-        currentEventID = Rhothomir_Player.getCurrentEventID();
-        enemyCheck = Rhothomir_Player.getEnemyCheck();
+        currentEventID = RhothomirPlayer.getCurrentEventID();
+        enemyCheck = RhothomirPlayer.getEnemyCheck();
         activity = this;
 
         if(currentEventID == 0.0)
@@ -62,6 +62,7 @@ public class FantasyEvent extends AppCompatActivity {
         else if(enemyCheck==1){
             Intent battle = new Intent(this, FantasyBattle.class);
             startActivity(battle);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             finish();
 
             }
@@ -86,15 +87,15 @@ public class FantasyEvent extends AppCompatActivity {
             currentEventList = new ArrayList<>();
 
             for (Fantasy_Events EM : allStoryEventList) {
-              Rhothomir_Player.setNextEventID1(EM.getFantasyNextEventID1());
-              Rhothomir_Player.setNextEventID2(EM.getFantasyNextEventID2());
-              Rhothomir_Player.setNextEventID3(EM.getFantasyNextEventID3());
-              Rhothomir_Player.setEventToast1(EM.getFantasyEventToast1());
-              Rhothomir_Player.setEventToast2(EM.getFantasyEventToast2());
-              Rhothomir_Player.setEventToast3(EM.getFantasyEventToast3());
+              RhothomirPlayer.setNextEventID1(EM.getFantasyNextEventID1());
+              RhothomirPlayer.setNextEventID2(EM.getFantasyNextEventID2());
+              RhothomirPlayer.setNextEventID3(EM.getFantasyNextEventID3());
+              RhothomirPlayer.setEventToast1(EM.getFantasyEventToast1());
+              RhothomirPlayer.setEventToast2(EM.getFantasyEventToast2());
+              RhothomirPlayer.setEventToast3(EM.getFantasyEventToast3());
 
                 enemyCheck = EM.getEnemyCheck();
-                Rhothomir_Player.setEnemyCheck(enemyCheck);
+                RhothomirPlayer.setEnemyCheck(enemyCheck);
 
                 enemyId = EM.getEnemyId();
                 FantasyEnemyEncounter.setEnemyId(enemyId);
