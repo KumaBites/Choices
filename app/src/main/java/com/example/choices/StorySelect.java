@@ -33,6 +33,7 @@ public class StorySelect extends AppCompatActivity {
         //Populate the list with the game names
         debtListArray = new ArrayList<>();
         debtListArray.add(new StorySelectModel("Rhothomir's Crown"));
+        debtListArray.add(new StorySelectModel("Who are you?"));
 
 
         //set adapter to recyclerview

@@ -1,6 +1,6 @@
 package com.example.choices;
 
-public class RhothomirPlayer {
+public class Player {
     private static int character_id;
     private static String name;
     private static String race;
@@ -26,7 +26,7 @@ public class RhothomirPlayer {
     }
 
     public static void setPicturUrl(int picturUrl) {
-        RhothomirPlayer.picturUrl = picturUrl;
+        Player.picturUrl = picturUrl;
     }
 
     private static int picturUrl;
@@ -37,7 +37,7 @@ public class RhothomirPlayer {
     }
 
     public static void setCurrentEventID(double currentEventID) {
-        RhothomirPlayer.currentEventID = currentEventID;
+        Player.currentEventID = currentEventID;
     }
 
     public static double getNextEventID1() {
@@ -45,7 +45,7 @@ public class RhothomirPlayer {
     }
 
     public static void setNextEventID1(double nextEventID1) {
-        RhothomirPlayer.nextEventID1 = nextEventID1;
+        Player.nextEventID1 = nextEventID1;
     }
 
     public static double getNextEventID2() {
@@ -53,7 +53,7 @@ public class RhothomirPlayer {
     }
 
     public static void setNextEventID2(double nextEventID2) {
-        RhothomirPlayer.nextEventID2 = nextEventID2;
+        Player.nextEventID2 = nextEventID2;
     }
 
     public static double getNextEventID3() {
@@ -61,7 +61,7 @@ public class RhothomirPlayer {
     }
 
     public static void setNextEventID3(double nextEventID3) {
-        RhothomirPlayer.nextEventID3 = nextEventID3;
+        Player.nextEventID3 = nextEventID3;
     }
 
     public static String getEventToast1() {
@@ -69,7 +69,7 @@ public class RhothomirPlayer {
     }
 
     public static void setEventToast1(String eventToast1) {
-        RhothomirPlayer.eventToast1 = eventToast1;
+        Player.eventToast1 = eventToast1;
     }
 
     public static String getEventToast2() {
@@ -77,7 +77,7 @@ public class RhothomirPlayer {
     }
 
     public static void setEventToast2(String eventToast2) {
-        RhothomirPlayer.eventToast2 = eventToast2;
+        Player.eventToast2 = eventToast2;
     }
 
     public static String getEventToast3() {
@@ -85,7 +85,7 @@ public class RhothomirPlayer {
     }
 
     public static void setEventToast3(String eventToast3) {
-        RhothomirPlayer.eventToast3 = eventToast3;
+        Player.eventToast3 = eventToast3;
     }
 
     public static int getEnemyId() {
@@ -93,7 +93,7 @@ public class RhothomirPlayer {
     }
 
     public static void setEnemyId(int enemyId) {
-        RhothomirPlayer.enemyId = enemyId;
+        Player.enemyId = enemyId;
     }
 
     public static int getEnemyCheck() {
@@ -101,7 +101,7 @@ public class RhothomirPlayer {
     }
 
     public static void setEnemyCheck(int enemyCheck) {
-        RhothomirPlayer.enemyCheck = enemyCheck;
+        Player.enemyCheck = enemyCheck;
     }
 
     public static int getCharacter_id() {
@@ -109,7 +109,7 @@ public class RhothomirPlayer {
     }
 
     public static void setCharacter_id(int character_id) {
-        RhothomirPlayer.character_id = character_id;
+        Player.character_id = character_id;
     }
 
     public static String getName() {
@@ -117,7 +117,7 @@ public class RhothomirPlayer {
     }
 
     public static void setName(String name) {
-        RhothomirPlayer.name = name;
+        Player.name = name;
     }
 
     public static String getRace() {
@@ -125,7 +125,7 @@ public class RhothomirPlayer {
     }
 
     public static void setRace(String race) {
-        RhothomirPlayer.race = race;
+        Player.race = race;
     }
 
     public static String getBackground() {
@@ -133,7 +133,7 @@ public class RhothomirPlayer {
     }
 
     public static void setBackground(String background) {
-        RhothomirPlayer.background = background;
+        Player.background = background;
     }
 
     public static int getStrength() {
@@ -141,7 +141,7 @@ public class RhothomirPlayer {
     }
 
     public static void setStrength(int strength) {
-        RhothomirPlayer.strength = strength;
+        Player.strength = strength;
     }
 
     public static int getEndurance() {
@@ -149,7 +149,7 @@ public class RhothomirPlayer {
     }
 
     public static void setEndurance(int endurance) {
-        RhothomirPlayer.endurance = endurance;
+        Player.endurance = endurance;
     }
 
     public static int getWillpower() {
@@ -157,7 +157,7 @@ public class RhothomirPlayer {
     }
 
     public static void setWillpower(int willpower) {
-        RhothomirPlayer.willpower = willpower;
+        Player.willpower = willpower;
     }
 
 

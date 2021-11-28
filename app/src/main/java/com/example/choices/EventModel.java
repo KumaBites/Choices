@@ -1,6 +1,6 @@
 package com.example.choices;
 
-public class FantasyEventModel {
+public class EventModel {
 
 
     private String eventChoice1;
@@ -8,7 +8,7 @@ public class FantasyEventModel {
     private String eventChoice3;
 
 
-    public FantasyEventModel(String eventChoice1, String eventChoice2, String eventChoice3){
+    public EventModel(String eventChoice1, String eventChoice2, String eventChoice3){
 
         this.eventChoice1 = eventChoice1;
         this.eventChoice2 = eventChoice2;

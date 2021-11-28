@@ -12,8 +12,8 @@
         <activity android:name=".Credits"></activity>
         <activity android:name=".CharacterSelect" />
         <activity android:name=".Rhothomir" />
-        <activity android:name=".FantasyBattle" />
-        <activity android:name=".FantasyEvent" />
+        <activity android:name=".Battle" />
+        <activity android:name=".Event" />
         <activity android:name=".GettingReady.Alan_Event" />
         <activity android:name=".StorySelect">
             <intent-filter>

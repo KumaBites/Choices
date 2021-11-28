@@ -5,20 +5,20 @@ public class CharacterSelectModel {
     public String select_race;
     public String select_background;
     public String select_strength;
-    public String select_endurance;
-    public String select_willpower;
-    public String select_uri;
+    public String select_health;
+    public String select_defense;
+    public String select_drawable_name;
 
-    public CharacterSelectModel(String select_name, String select_race, String select_background, String select_strength, String select_endurance, String select_willpower, String select_uri)
+    public CharacterSelectModel(String select_name, String select_race, String select_background, String select_strength, String select_health, String select_defense, String select_drawable_name)
 
     {
         this.select_name = select_name;
         this.select_race = select_race;
         this.select_background = select_background;
         this.select_strength = select_strength;
-        this.select_endurance = select_endurance;
-        this.select_willpower = select_willpower;
-        this.select_uri = select_uri;
+        this.select_health = select_health;
+        this.select_defense = select_defense;
+        this.select_drawable_name = select_drawable_name;
     }
     public String getSelect_name() {
         return select_name;
@@ -52,28 +52,28 @@ public class CharacterSelectModel {
         this.select_strength = select_strength;
     }
 
-    public String getSelect_endurance() {
-        return select_endurance;
+    public String getSelect_health() {
+        return select_health;
     }
 
-    public void setSelect_endurance(String select_endurance) {
-        this.select_endurance = select_endurance;
+    public void setSelect_health(String select_health) {
+        this.select_health = select_health;
     }
 
-    public String getSelect_willpower() {
-        return select_willpower;
+    public String getSelect_defense() {
+        return select_defense;
     }
 
-    public void setSelect_willpower(String select_willpower) {
-        this.select_willpower = select_willpower;
+    public void setSelect_defense(String select_defense) {
+        this.select_defense = select_defense;
     }
 
-    public String getSelect_uri() {
-        return select_uri;
+    public String getSelect_drawable_name() {
+        return select_drawable_name;
     }
 
-    public void setSelect_uri(String select_uri) {
-        this.select_uri = select_uri;
+    public void setSelect_drawable_name(String select_drawable_name) {
+        this.select_drawable_name = select_drawable_name;
     }
 
 

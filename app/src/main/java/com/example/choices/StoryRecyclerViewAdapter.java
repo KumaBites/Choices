@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -51,6 +49,7 @@ public class StoryRecyclerViewAdapter extends RecyclerView.Adapter<StoryRecycler
                 public void onClick(View v) {
                     String storyName = storyList.get(position).getStoryName();
                     String storyTimeClass = "Rhothomir's Crown";
+                    String japaneseWhoAreYou = "Who are you?";
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
                     if(storyName.equals(storyTimeClass)) {
@@ -68,6 +67,23 @@ public class StoryRecyclerViewAdapter extends RecyclerView.Adapter<StoryRecycler
                         }
                     });
                     builder.show();
+                    }
+                    if(storyName.equals(japaneseWhoAreYou)) {
+                        builder.setMessage("Do you want to start the adventure " +storyName+"?");
+                        builder.setCancelable(true);
+                        builder.setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent newStory = new Intent(context, Event.class);
+                                context.startActivity(newStory);
+                                Player.setCurrentEventID(3.0);
+                                StorySelect.getInstance().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                                //Removes from the back stack and destroys it
+                                StorySelect.getInstance().finish();
+
+                            }
+                        });
+                        builder.show();
                     }
                 }
             });

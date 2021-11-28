@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.choices.ENTITY.Rhothomir_Player_Database;
+import com.example.choices.ENTITY.PlayerDatabase;
 
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -17,7 +17,7 @@ import java.util.concurrent.Future;
 public class Rhothomir extends AppCompatActivity {
     EventsDatabase eDatabase;
     private TextView character,name,race,back,will,end,health;
-    private List<Rhothomir_Player_Database> allPlayers;
+    private List<PlayerDatabase> allPlayers;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +25,8 @@ public class Rhothomir extends AppCompatActivity {
         eDatabase = EventsDatabase.getDatabase(this);
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         Rhothomir.getEventCallable newEvent = new getEventCallable();
-        Future<List<Rhothomir_Player_Database>> future = executorService.submit(newEvent);
-        List<Rhothomir_Player_Database> result = null;
+        Future<List<PlayerDatabase>> future = executorService.submit(newEvent);
+        List<PlayerDatabase> result = null;
         try {
             result = future.get();
         } catch (ExecutionException e) {
@@ -36,45 +36,45 @@ public class Rhothomir extends AppCompatActivity {
         }
 
         allPlayers = result;
-        for (Rhothomir_Player_Database RPD : allPlayers) {
-            RhothomirPlayer.setCharacter_id(RPD.getCharacter_id());
-            RhothomirPlayer.setName((RPD.getName()));
-            RhothomirPlayer.setRace(RPD.getRace());
-            RhothomirPlayer.setBackground(RPD.getBackground());
-            RhothomirPlayer.setEndurance(RPD.getEndurance());
-            RhothomirPlayer.setStrength(RPD.getStrength());
-            RhothomirPlayer.setWillpower(RPD.getWillpower());
+        for (PlayerDatabase RPD : allPlayers) {
+            Player.setCharacter_id(RPD.getCharacter_id());
+            Player.setName((RPD.getName()));
+            Player.setRace(RPD.getRace());
+            Player.setBackground(RPD.getBackground());
+            Player.setEndurance(RPD.getHealth());
+            Player.setStrength(RPD.getStrength());
+            Player.setWillpower(RPD.getDefense());
 
             character = findViewById(R.id.chark);
-            character.setText(String.valueOf(RhothomirPlayer.getCharacter_id()));
+            character.setText(String.valueOf(Player.getCharacter_id()));
 
             name = findViewById(R.id.name);
-            name.setText(RhothomirPlayer.getName());
+            name.setText(Player.getName());
 
             race = findViewById(R.id.race);
-            race.setText(RhothomirPlayer.getRace());
+            race.setText(Player.getRace());
 
             back = findViewById(R.id.back);
-            back.setText(RhothomirPlayer.getBackground());
+            back.setText(Player.getBackground());
 
             will = findViewById(R.id.wil);
-            will.setText(String.valueOf(RhothomirPlayer.getWillpower()));
+            will.setText(String.valueOf(Player.getWillpower()));
 
             end = findViewById(R.id.endu);
-            end.setText(String.valueOf(RhothomirPlayer.getEndurance()));
+            end.setText(String.valueOf(Player.getEndurance()));
 
             health = findViewById(R.id.heath);
-            health.setText(String.valueOf(RhothomirPlayer.getStrength()));
+            health.setText(String.valueOf(Player.getStrength()));
         }
     }
 
 
 
-    private class getEventCallable implements Callable<List<Rhothomir_Player_Database>>
+    private class getEventCallable implements Callable<List<PlayerDatabase>>
     {
-        List<Rhothomir_Player_Database> rList;
+        List<PlayerDatabase> rList;
         @Override
-        public List<Rhothomir_Player_Database> call(){
+        public List<PlayerDatabase> call(){
             rList = eDatabase.rhothomir_dao().getAllPlayers();
             return rList;
 

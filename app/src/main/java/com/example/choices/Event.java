@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.choices.ENTITY.Fantasy_Enemy;
-import com.example.choices.ENTITY.Fantasy_Events;
+import com.example.choices.ENTITY.Enemy;
+import com.example.choices.ENTITY.Events;
 
 
 import java.util.ArrayList;
@@ -26,18 +26,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-public class FantasyEvent extends AppCompatActivity {
-    private RecyclerView event;
-    private List<FantasyEventModel> currentEventList;
+public class Event extends AppCompatActivity {
+    private RecyclerView event, eventDescription, eventQuestion;
+    private List<EventModel> currentEventListChoices;
+    private List<QuestionModel> questionEventList;
+    private List<DescriptionModel> descriptionEventList;
     private List<String> currentEventdescription;
-    private List<Fantasy_Events> allStoryEventList;
-    private List<Fantasy_Enemy> enemyEventList;
-    private FantasyEventRecyclerViewAdapter eAdapter;
-    private TextView eventTitle, eventDescription ;
+    private List<Events> allStoryEventList;
+    private List<Enemy> enemyEventList;
+    private EventRecyclerViewAdapter eAdapter;
+    private QuestionRecyclerViewAdapter qAdapter;
+    private DescriptionRecyclerViewAdapter dAdapter;
+    private TextView eventTitle;
     private int enemyId, enemyCheck;
-    private double currentEventID ,nextID, nextID2,nextID3;
+    private double currentEventID ;
     EventsDatabase eDatabase;
-    private static FantasyEvent activity;
+    private static Event activity;
 
 
     @Override
@@ -45,12 +49,14 @@ public class FantasyEvent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
         event = findViewById(R.id.EventRecyclerView);
-        eventDescription = findViewById(R.id.EventDescription);
+        eventDescription = findViewById(R.id.descriptionRecyclerView);
+        eventQuestion = findViewById(R.id.questionRecyclerView);
+
         eventTitle = findViewById(R.id.EventTitle);
-        currentEventID = RhothomirPlayer.getCurrentEventID();
+        currentEventID = Player.getCurrentEventID();
         eDatabase = EventsDatabase.getDatabase(this);
-        currentEventID = RhothomirPlayer.getCurrentEventID();
-        enemyCheck = RhothomirPlayer.getEnemyCheck();
+        currentEventID = Player.getCurrentEventID();
+        enemyCheck = Player.getEnemyCheck();
         activity = this;
 
         if(currentEventID == 0.0)
@@ -60,7 +66,7 @@ public class FantasyEvent extends AppCompatActivity {
 
         }
         else if(enemyCheck==1){
-            Intent battle = new Intent(this, FantasyBattle.class);
+            Intent battle = new Intent(this, Battle.class);
             startActivity(battle);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             finish();
@@ -69,10 +75,13 @@ public class FantasyEvent extends AppCompatActivity {
 
         else {
             event.setLayoutManager(new LinearLayoutManager(this));
+            eventQuestion.setLayoutManager(new LinearLayoutManager((this)));
+            eventDescription.setLayoutManager(new LinearLayoutManager((this)));
+
             ExecutorService executorService = Executors.newSingleThreadExecutor();
             getFantasyEventCallable newEvent = new getFantasyEventCallable();
-            Future<List<Fantasy_Events>> future = executorService.submit(newEvent);
-            List<Fantasy_Events> result = null;
+            Future<List<Events>> future = executorService.submit(newEvent);
+            List<Events> result = null;
             try {
                 result = future.get();
             } catch (ExecutionException e) {
@@ -84,37 +93,44 @@ public class FantasyEvent extends AppCompatActivity {
 
 
             allStoryEventList =result;
-            currentEventList = new ArrayList<>();
+            currentEventListChoices = new ArrayList<>();
+            questionEventList = new ArrayList<>();
+            descriptionEventList = new ArrayList<>();
 
-            for (Fantasy_Events EM : allStoryEventList) {
-              RhothomirPlayer.setNextEventID1(EM.getFantasyNextEventID1());
-              RhothomirPlayer.setNextEventID2(EM.getFantasyNextEventID2());
-              RhothomirPlayer.setNextEventID3(EM.getFantasyNextEventID3());
-              RhothomirPlayer.setEventToast1(EM.getFantasyEventToast1());
-              RhothomirPlayer.setEventToast2(EM.getFantasyEventToast2());
-              RhothomirPlayer.setEventToast3(EM.getFantasyEventToast3());
+            for (Events EM : allStoryEventList) {
+              Player.setNextEventID1(EM.getNextEventID1());
+              Player.setNextEventID2(EM.getNextEventID2());
+              Player.setNextEventID3(EM.getNextEventID3());
+
 
                 enemyCheck = EM.getEnemyCheck();
-                RhothomirPlayer.setEnemyCheck(enemyCheck);
+                Player.setEnemyCheck(enemyCheck);
 
                 enemyId = EM.getEnemyId();
-                FantasyEnemyEncounter.setEnemyId(enemyId);
+                EnemyEncounter.setEnemyId(enemyId);
 
-               eventTitle.setText(EM.getFantasyEventName());
-               eventDescription.setText(EM.getFantasyEventDescription());
+               eventTitle.setText(EM.getEventName());
 
+                String eventChoice1 = EM.getEventChoice1();
+                String eventChoice2 = EM.getEventChoice2();
+                String eventChoice3 = EM.getEventChoice3();
+                String question = EM.getEventQuestion();
+                String description = EM.getEventDescription();
 
+                currentEventListChoices.add(new EventModel( eventChoice1, eventChoice2, eventChoice3));
+                questionEventList.add(new QuestionModel(question));
+                descriptionEventList.add((new DescriptionModel(description)));
 
-                String eventChoice1 = EM.getFantasyEventChoice1();
-                String eventChoice2 = EM.getFantasyEventChoice2();
-                String eventChoice3 = EM.getFantasyEventChoice3();
-
-                currentEventList.add(new FantasyEventModel( eventChoice1, eventChoice2, eventChoice3));
             }
 
-            eAdapter = new FantasyEventRecyclerViewAdapter(currentEventList, this);
+            eAdapter = new EventRecyclerViewAdapter(currentEventListChoices, this);
             event.setAdapter(eAdapter);
 
+            qAdapter = new QuestionRecyclerViewAdapter(questionEventList, this);
+            eventQuestion.setAdapter(qAdapter);
+
+            dAdapter = new DescriptionRecyclerViewAdapter(descriptionEventList, this);
+            eventDescription.setAdapter(dAdapter);
 
         }
     }
@@ -122,7 +138,7 @@ public class FantasyEvent extends AppCompatActivity {
         final Intent finish = new Intent(this, StorySelect.class);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("You have completed Alan's dilemma! Why not try one of the other stories?");
+        builder.setMessage("You have completed your story! Why not try one of the other stories?");
         builder.setCancelable(false);
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
@@ -134,12 +150,12 @@ public class FantasyEvent extends AppCompatActivity {
         });
         builder.show();
     }
-    private class getFantasyEventCallable implements Callable<List<Fantasy_Events>>
+    private class getFantasyEventCallable implements Callable<List<Events>>
 
     {
-        List<Fantasy_Events> rList;
+        List<Events> rList;
         @Override
-        public List<Fantasy_Events> call(){
+        public List<Events> call(){
            rList = eDatabase.fantasyDao().getSelectEvent(currentEventID);
 
             return rList;

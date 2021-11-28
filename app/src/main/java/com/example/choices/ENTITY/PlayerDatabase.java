@@ -1,27 +1,25 @@
 package com.example.choices.ENTITY;
 
-import android.net.Uri;
-
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class Rhothomir_Player_Database {
+public class PlayerDatabase {
     @PrimaryKey
     private int character_id;
     private String name;
     private String race;
     private String background;
     private int strength;
-    private int endurance;
-    private int willpower;
-    private String uri;
-    public String getUri() {
-        return uri;
+    private int health;
+    private int defense;
+    private String drawableName;
+    public String getDrawableName() {
+        return drawableName;
     }
 
-    public void setUri(String uri) {
-        this.uri = uri;
+    public void setDrawableName(String drawableName) {
+        this.drawableName = drawableName;
     }
 
 
@@ -68,20 +66,20 @@ public class Rhothomir_Player_Database {
 
 
 
-    public int getEndurance() {
-        return endurance;
+    public int getHealth() {
+        return health;
     }
 
-    public void setEndurance(int endurance) {
-        this.endurance = endurance;
+    public void setHealth(int health) {
+        this.health = health;
     }
 
-    public int getWillpower() {
-        return willpower;
+    public int getDefense() {
+        return defense;
     }
 
-    public void setWillpower(int willpower) {
-        this.willpower = willpower;
+    public void setDefense(int defense) {
+        this.defense = defense;
     }
 
 

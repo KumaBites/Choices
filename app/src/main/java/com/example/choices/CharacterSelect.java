@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.choices.ENTITY.Rhothomir_Player_Database;
+import com.example.choices.ENTITY.PlayerDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +22,11 @@ import java.util.concurrent.Future;
 public class CharacterSelect extends AppCompatActivity {
     private RecyclerView character_view;
     private List<CharacterSelectModel> currentCharacterList;
-    private List<Rhothomir_Player_Database> databaseList;
+    private List<PlayerDatabase> databaseList;
     private CharacterRecyclerViewAdapter eAdapter;
-    private String select_name,select_race,select_background,oldUriString, select_strength,select_endurance,select_willpower;
-    public int oldSelect_strength,oldSelect_endurance,oldSelect_willpower;
-    public String select_uri;
+    private String select_name,select_race,select_background,select_strength, select_health, select_defense;
+    public int oldSelect_strength, oldSelect_health, oldSelect_defense;
+    public String drawableName;
     public static CharacterSelect activityHandle = null;
     EventsDatabase eDatabase;
 
@@ -50,8 +50,8 @@ public class CharacterSelect extends AppCompatActivity {
         //Creates new thread and new callable to get characters from the database, and a future to get the data
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         getEventCallable newEvent = new getEventCallable();
-        Future<List<Rhothomir_Player_Database>> future = executorService.submit(newEvent);
-        List<Rhothomir_Player_Database> result = null;
+        Future<List<PlayerDatabase>> future = executorService.submit(newEvent);
+        List<PlayerDatabase> result = null;
         try {
             result = future.get();
         } catch (ExecutionException e) {
@@ -63,7 +63,7 @@ public class CharacterSelect extends AppCompatActivity {
 
         // Takes in the result and uses a for loop to get the data to populate the cardview
         currentCharacterList = new ArrayList<>();
-        for (Rhothomir_Player_Database RPD : databaseList) {
+        for (PlayerDatabase RPD : databaseList) {
             select_name = RPD.getName();
             select_background = RPD.getBackground();
             select_race =RPD.getRace();
@@ -71,15 +71,15 @@ public class CharacterSelect extends AppCompatActivity {
             oldSelect_strength = RPD.getStrength();
             select_strength = String.valueOf(oldSelect_strength);
 
-            oldSelect_endurance = RPD.getEndurance();
-            select_endurance = String.valueOf(oldSelect_endurance);
+            oldSelect_health = RPD.getHealth();
+            select_health = String.valueOf(oldSelect_health);
 
-            oldSelect_willpower = RPD.getWillpower();
-            select_willpower = String.valueOf(oldSelect_willpower);
+            oldSelect_defense = RPD.getDefense();
+            select_defense = String.valueOf(oldSelect_defense);
 
-            select_uri =  RPD.getUri();
+            drawableName =  RPD.getDrawableName();
 
-            currentCharacterList.add(new CharacterSelectModel(select_name,select_race,select_background,select_strength,select_endurance, select_willpower,select_uri));
+            currentCharacterList.add(new CharacterSelectModel(select_name,select_race,select_background,select_strength, select_health, select_defense, drawableName));
         }
         eAdapter = new CharacterRecyclerViewAdapter(currentCharacterList, this);
         character_view.setAdapter(eAdapter);
@@ -91,11 +91,11 @@ public class CharacterSelect extends AppCompatActivity {
     /**
      *
      */
-    private class getEventCallable implements Callable<List<Rhothomir_Player_Database>>
+    private class getEventCallable implements Callable<List<PlayerDatabase>>
     {
-        List<Rhothomir_Player_Database> rList;
+        List<PlayerDatabase> rList;
         @Override
-        public List<Rhothomir_Player_Database> call(){
+        public List<PlayerDatabase> call(){
             rList = eDatabase.rhothomir_dao().getAllPlayers();
 
             return rList;

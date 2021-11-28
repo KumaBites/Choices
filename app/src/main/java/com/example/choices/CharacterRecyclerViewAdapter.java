@@ -41,23 +41,23 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
         {
             int newStrength,newEndurance,newWillpower;
             String strength,endurance,willpower;
-            willpower = character_select_modelList.get(position).getSelect_willpower();
-            endurance = character_select_modelList.get(position).getSelect_endurance();
+            willpower = character_select_modelList.get(position).getSelect_defense();
+            endurance = character_select_modelList.get(position).getSelect_health();
             strength = character_select_modelList.get(position).getSelect_strength();
             newStrength = Integer.parseInt(strength);
             newEndurance =Integer.parseInt(endurance);
             newWillpower = Integer.parseInt(willpower);
             //Set Player Stats
-            RhothomirPlayer.setName(character);
-            RhothomirPlayer.setRace(imageCheck);
-            RhothomirPlayer.setBackground(character_select_modelList.get(position).getSelect_background());
-            RhothomirPlayer.setStrength(newStrength);
-            RhothomirPlayer.setWillpower(newWillpower);
-            RhothomirPlayer.setEndurance(newEndurance);
-            RhothomirPlayer.setCurrentEventID(1.0);
-            RhothomirPlayer.setPicturUrl(id);
+            Player.setName(character);
+            Player.setRace(imageCheck);
+            Player.setBackground(character_select_modelList.get(position).getSelect_background());
+            Player.setStrength(newStrength);
+            Player.setWillpower(newWillpower);
+            Player.setEndurance(newEndurance);
+            Player.setCurrentEventID(1.0);
+            Player.setPicturUrl(id);
             //Starts new activity
-            Intent newIntent = new Intent(context, FantasyEvent.class);
+            Intent newIntent = new Intent(context, Event.class);
             context.startActivity(newIntent);
             CharacterSelect.getInstance().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
@@ -66,22 +66,22 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
         }
         @Override
         public void onBindViewHolder(CharacterSelectViewHolder holder, final int position) {
-            String id1 = character_select_modelList.get(position).getSelect_uri();
+            String id1 = character_select_modelList.get(position).getSelect_drawable_name();
             final int id = context.getResources().getIdentifier(id1, "drawable", context.getPackageName());
 
 
             holder.txtcharacter_name.setText("Character name: "+character_select_modelList.get(position).getSelect_name());
             holder.txtrace.setText("Character race: "+character_select_modelList.get(position).getSelect_race());
             holder.txtbackground.setText("Background: "+character_select_modelList.get(position).getSelect_background());
-            holder.txtendurance.setText("Endurance: "+character_select_modelList.get(position).getSelect_endurance());
+            holder.txthealth.setText("Endurance: "+character_select_modelList.get(position).getSelect_health());
             holder.txtstrength.setText("Strength: "+character_select_modelList.get(position).getSelect_strength());
-            holder.txtwillpower.setText("Willpower: "+character_select_modelList.get(position).getSelect_willpower());
+            holder.txtdefense.setText("Willpower: "+character_select_modelList.get(position).getSelect_defense());
             holder.txtcharacter_image.setImageResource(id);
 
             holder.txtcharacter_image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final String imageCheck = character_select_modelList.get(position).getSelect_uri();
+                    final String imageCheck = character_select_modelList.get(position).getSelect_drawable_name();
                     final String elf = "Nardual Glynwynn";
                     final String dwarf ="Throdgram Redbringer";
                     final String human = "Rave Vossen";
@@ -142,9 +142,9 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
             TextView txtcharacter_name;
             TextView txtrace;
             TextView txtbackground;
-            TextView txtendurance;
+            TextView txthealth;
             TextView txtstrength;
-            TextView txtwillpower;
+            TextView txtdefense;
             ImageView txtcharacter_image;
 
 
@@ -154,8 +154,8 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
                 txtrace = view.findViewById(R.id.race);
                 txtbackground = view.findViewById(R.id.background);
                 txtstrength = view.findViewById(R.id.strength);
-                txtwillpower = view.findViewById(R.id.willpower);
-                txtendurance = view.findViewById(R.id.endurance);
+                txtdefense = view.findViewById(R.id.willpower);
+                txthealth = view.findViewById(R.id.endurance);
                 txtcharacter_image = view.findViewById(R.id.character_image);
             }
         }

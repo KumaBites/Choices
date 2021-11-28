@@ -6,120 +6,118 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Events {
 
-
     @PrimaryKey
-    private double eventId;
+    private double EventId;
+    private String EventName;
+    private String EventDescription;
+    private String EventQuestion;
+    private double NextEventID1;
+    private String EventChoice1;
+    private double NextEventID2;
+    private String EventChoice2;
+    private double NextEventID3;
+    private String EventChoice3;
+    private int enemyCheck;
+    private int enemyId;
 
-    private String eventName;
-    private String eventDescription;
-    private double nextEventID1;
-    private String eventChoice1;
-    private double nextEventID2;
-    private String eventChoice2;
-
-    private double nextEventID3;
-    private String eventChoice3;
-    private String eventToast1;
-    private String eventToast2;
-    private String eventToast3;
-    public String getEventToast1() {
-        return eventToast1;
+    public int getEnemyId() {
+        return enemyId;
     }
 
-    public void setEventToast1(String eventToast1) {
-        this.eventToast1 = eventToast1;
+    public void setEnemyId(int enemyId) {
+        this.enemyId = enemyId;
     }
 
-    public String getEventToast2() {
-        return eventToast2;
+    public int getEnemyCheck() {
+        return enemyCheck;
     }
 
-    public void setEventToast2(String eventToast2) {
-        this.eventToast2 = eventToast2;
+    public void setEnemyCheck(int enemyCheck) {
+        this.enemyCheck = enemyCheck;
     }
-
-    public String getEventToast3() {
-        return eventToast3;
-    }
-
-    public void setEventToast3(String eventToast3) {
-        this.eventToast3 = eventToast3;
-    }
-
-
-
-    public double getNextEventID1() {
-        return nextEventID1;
-    }
-
-    public void setNextEventID1(double nextEventID1) {
-        this.nextEventID1 = nextEventID1;
-    }
-
-    public double getNextEventID2() {
-        return nextEventID2;
-    }
-
-    public void setNextEventID2(double nextEventID2) {
-        this.nextEventID2 = nextEventID2;
-    }
-
-    public double getNextEventID3() {
-        return nextEventID3;
-    }
-
-    public void setNextEventID3(double nextEventID3) {
-        this.nextEventID3 = nextEventID3;
-    }
-
-
-
 
     public double getEventId() {
-        return eventId;
+        return EventId;
     }
 
-    public void setEventId( double eventId) {
-        this.eventId = eventId;
+    public void setEventId(double eventId) {
+        this.EventId = eventId;
     }
 
     public String getEventName() {
-        return eventName;
+        return EventName;
     }
 
     public void setEventName(String eventName) {
-        this.eventName = eventName;
+        this.EventName = eventName;
     }
 
     public String getEventDescription() {
-        return eventDescription;
+        return EventDescription;
     }
 
     public void setEventDescription(String eventDescription) {
-        this.eventDescription = eventDescription;
+        this.EventDescription = eventDescription;
+    }
+
+    public String getEventQuestion() {
+        return EventQuestion;
+    }
+
+    public void setEventQuestion(String eventQuestion) {
+        EventQuestion = eventQuestion;
+    }
+
+    public double getNextEventID1() {
+        return NextEventID1;
+    }
+
+    public void setNextEventID1(double nextEventID1) {
+        this.NextEventID1 = nextEventID1;
     }
 
     public String getEventChoice1() {
-        return eventChoice1;
+        return EventChoice1;
     }
 
     public void setEventChoice1(String eventChoice1) {
-        this.eventChoice1 = eventChoice1;
+        this.EventChoice1 = eventChoice1;
+    }
+
+    public double getNextEventID2() {
+        return NextEventID2;
+    }
+
+    public void setNextEventID2(double nextEventID2) {
+        this.NextEventID2 = nextEventID2;
     }
 
     public String getEventChoice2() {
-        return eventChoice2;
+        return EventChoice2;
     }
 
     public void setEventChoice2(String eventChoice2) {
-        this.eventChoice2 = eventChoice2;
+        this.EventChoice2 = eventChoice2;
+    }
+
+    public double getNextEventID3() {
+        return NextEventID3;
+    }
+
+    public void setNextEventID3(double nextEventID3) {
+        this.NextEventID3 = nextEventID3;
     }
 
     public String getEventChoice3() {
-        return eventChoice3;
+        return EventChoice3;
     }
 
     public void setEventChoice3(String eventChoice3) {
-        this.eventChoice3 = eventChoice3;
+        this.EventChoice3 = eventChoice3;
     }
+
+
+
+
+
 }

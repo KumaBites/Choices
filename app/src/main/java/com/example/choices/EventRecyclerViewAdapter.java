@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import java.util.List;
@@ -16,26 +15,26 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-public class FantasyEventRecyclerViewAdapter extends RecyclerView.Adapter<FantasyEventRecyclerViewAdapter.EventViewHolder> {
+public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecyclerViewAdapter.EventViewHolder> {
 
-    private List<FantasyEventModel> eventList;
+    private List<EventModel> eventList;
     Context context;
 
-    public FantasyEventRecyclerViewAdapter(List<FantasyEventModel> eventList, Context context) {
+    public EventRecyclerViewAdapter(List<EventModel> eventList, Context context) {
         this.eventList = eventList;
         this.context = context;
     }
 
     @Override
-    public FantasyEventRecyclerViewAdapter.EventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public EventRecyclerViewAdapter.EventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflate the layout file
         View EventModelView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_event, parent, false);
-        FantasyEventRecyclerViewAdapter.EventViewHolder gvh = new FantasyEventRecyclerViewAdapter.EventViewHolder(EventModelView);
+        EventRecyclerViewAdapter.EventViewHolder gvh = new EventRecyclerViewAdapter.EventViewHolder(EventModelView);
         return gvh;
     }
 
     @Override
-    public void onBindViewHolder(FantasyEventRecyclerViewAdapter.EventViewHolder holder, final int position) {
+    public void onBindViewHolder(EventRecyclerViewAdapter.EventViewHolder holder, final int position) {
 
         holder.eventChoice1.setText("Choice 1:"+(eventList.get(position).getEventChoice1()));
         holder.eventChoice2.setText("Choice 2 :"+(eventList.get(position).getEventChoice2()));
@@ -44,9 +43,8 @@ public class FantasyEventRecyclerViewAdapter extends RecyclerView.Adapter<Fantas
             @Override
             public void onClick(View v) {
                 String eventName1 = eventList.get(position).getEventChoice1();
-                Toast.makeText(context, eventName1 + " is selected", Toast.LENGTH_SHORT).show();
-                RhothomirPlayer.setCurrentEventID(RhothomirPlayer.getNextEventID1());
-                displayResult(RhothomirPlayer.getEventToast1());
+                Player.setCurrentEventID(Player.getNextEventID1());
+                displayResult(eventName1);
 
             }
         });
@@ -54,18 +52,16 @@ public class FantasyEventRecyclerViewAdapter extends RecyclerView.Adapter<Fantas
             @Override
             public void onClick(View v) {
                 String eventName2 = eventList.get(position).getEventChoice2();
-                Toast.makeText(context, eventName2 + " is selected", Toast.LENGTH_SHORT).show();
-                RhothomirPlayer.setCurrentEventID(RhothomirPlayer.getNextEventID2());
-                displayResult(RhothomirPlayer.getEventToast2());
+                Player.setCurrentEventID(Player.getNextEventID2());
+                displayResult(eventName2);
             }
         });
         holder.eventChoice3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String eventName3 = eventList.get(position).getEventChoice3();
-                Toast.makeText(context, eventName3 + " is selected", Toast.LENGTH_SHORT).show();
-               RhothomirPlayer.setCurrentEventID(RhothomirPlayer.getNextEventID3());
-                displayResult(RhothomirPlayer.getEventToast3());
+               Player.setCurrentEventID(Player.getNextEventID3());
+                displayResult(eventName3);
             }
         });
     }
@@ -96,12 +92,12 @@ public class FantasyEventRecyclerViewAdapter extends RecyclerView.Adapter<Fantas
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                FantasyEvent.getInstance().finish();
-                Intent intent = new Intent(context, FantasyEvent.class);
+                Event.getInstance().finish();
+                Intent intent = new Intent(context, Event.class);
                 context.startActivity(intent);
-                FantasyEvent.getInstance().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                Event.getInstance().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 //Destroys the event after it is used
-                FantasyEvent.getInstance().finish();
+                Event.getInstance().finish();
             }
         });
         builder.show();

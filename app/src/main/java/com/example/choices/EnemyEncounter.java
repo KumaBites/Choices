@@ -1,6 +1,6 @@
 package com.example.choices;
 
-public class FantasyEnemyEncounter {
+public class EnemyEncounter {
 
     private static int enemyId;
     private static String enemy_name;
@@ -16,7 +16,7 @@ public class FantasyEnemyEncounter {
     }
 
     public static void setUri(String uri) {
-        FantasyEnemyEncounter.uri = uri;
+        EnemyEncounter.uri = uri;
     }
 
     public static int getEnemyId() {
@@ -24,7 +24,7 @@ public class FantasyEnemyEncounter {
     }
 
     public static void setEnemyId(int enemyId) {
-        FantasyEnemyEncounter.enemyId = enemyId;
+        EnemyEncounter.enemyId = enemyId;
     }
 
     public static String getEnemy_name() {
@@ -32,7 +32,7 @@ public class FantasyEnemyEncounter {
     }
 
     public static void setEnemy_name(String enemy_name) {
-        FantasyEnemyEncounter.enemy_name = enemy_name;
+        EnemyEncounter.enemy_name = enemy_name;
     }
 
     public static int getEnemy_health() {
@@ -40,7 +40,7 @@ public class FantasyEnemyEncounter {
     }
 
     public static void setEnemy_health(int enemy_health) {
-        FantasyEnemyEncounter.enemy_health = enemy_health;
+        EnemyEncounter.enemy_health = enemy_health;
     }
 
     public static int getEnemy_attack() {
@@ -48,7 +48,7 @@ public class FantasyEnemyEncounter {
     }
 
     public static void setEnemy_attack(int enemy_attack) {
-        FantasyEnemyEncounter.enemy_attack = enemy_attack;
+        EnemyEncounter.enemy_attack = enemy_attack;
     }
 
     public static int getEnemy_defense() {
@@ -56,7 +56,7 @@ public class FantasyEnemyEncounter {
     }
 
     public static void setEnemy_defense(int enemy_defense) {
-        FantasyEnemyEncounter.enemy_defense = enemy_defense;
+        EnemyEncounter.enemy_defense = enemy_defense;
     }
 
     public static double getNextEventId() {
@@ -64,7 +64,7 @@ public class FantasyEnemyEncounter {
     }
 
     public static void setNextEventId(double nextEventId) {
-        FantasyEnemyEncounter.nextEventId = nextEventId;
+        EnemyEncounter.nextEventId = nextEventId;
     }
 
 

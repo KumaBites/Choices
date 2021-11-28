@@ -3,7 +3,7 @@ package com.example.choices.ENTITY;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 @Entity
-public class Fantasy_Enemy {
+public class Enemy {
     @PrimaryKey
     private int enemyId;
     private String enemy_name;
