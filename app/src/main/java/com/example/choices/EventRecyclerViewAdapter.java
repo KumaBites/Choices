@@ -43,25 +43,43 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
             @Override
             public void onClick(View v) {
                 String eventName1 = eventList.get(position).getEventChoice1();
-                Player.setCurrentEventID(Player.getNextEventID1());
-                displayResult(eventName1);
-
+                if(Player.getNextEventID1() == 0.1)
+                {
+                incorrect(eventName1);
+                }
+                else
+                    {
+                    Player.setCurrentEventID(Player.getNextEventID1());
+                    displayResult(eventName1);
+                }
             }
         });
         holder.eventChoice2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String eventName2 = eventList.get(position).getEventChoice2();
-                Player.setCurrentEventID(Player.getNextEventID2());
-                displayResult(eventName2);
+                if(Player.getNextEventID2() == 0.1)
+                {
+                    incorrect(eventName2);
+                }
+                else {
+                    Player.setCurrentEventID(Player.getNextEventID2());
+                    displayResult(eventName2);
+                }
             }
         });
         holder.eventChoice3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String eventName3 = eventList.get(position).getEventChoice3();
-               Player.setCurrentEventID(Player.getNextEventID3());
-                displayResult(eventName3);
+                if(Player.getNextEventID3() == 0.1)
+                {
+                    incorrect(eventName3);
+                }
+                else {
+                    Player.setCurrentEventID(Player.getNextEventID3());
+                    displayResult(eventName3);
+                }
             }
         });
     }
@@ -87,7 +105,7 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
     //Takes in the Toast message as String and displays it, it then starts the new activity
     private void displayResult(String Toast) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setMessage(Toast);
+        builder.setMessage("Thats the correct answer!: "+Toast);
         builder.setCancelable(false);
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
@@ -98,6 +116,18 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
                 Event.getInstance().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 //Destroys the event after it is used
                 Event.getInstance().finish();
+            }
+        });
+        builder.show();
+    }
+    private void incorrect(String Toast)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setMessage("That's not correct: "+Toast);
+        builder.setCancelable(true);
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
             }
         });
         builder.show();
