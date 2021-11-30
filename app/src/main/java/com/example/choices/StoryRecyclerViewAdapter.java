@@ -49,7 +49,7 @@ public class StoryRecyclerViewAdapter extends RecyclerView.Adapter<StoryRecycler
                     switch (storyName)
                     {
                         case "Rhothomir's Crown":
-                            double eventId = 0.0;
+                            double eventId = 9.0;
                             startStory(storyName,eventId);
                             break;
                         case "Good Morning!":

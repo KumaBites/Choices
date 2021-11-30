@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -17,11 +18,13 @@ import java.util.List;
 public class DescriptionRecyclerViewAdapter extends RecyclerView.Adapter<DescriptionRecyclerViewAdapter.EventViewHolder> {
 
     private List<DescriptionModel> eventList;
+    int imageCheck;
     Context context;
 
-    public DescriptionRecyclerViewAdapter(List<DescriptionModel> eventList, Context context) {
+    public DescriptionRecyclerViewAdapter(List<DescriptionModel> eventList, Context context, int imageCheck) {
         this.eventList = eventList;
         this.context = context;
+        this.imageCheck = imageCheck;
     }
 
     @Override
@@ -34,8 +37,15 @@ public class DescriptionRecyclerViewAdapter extends RecyclerView.Adapter<Descrip
 
     @Override
     public void onBindViewHolder(DescriptionRecyclerViewAdapter.EventViewHolder holder, final int position) {
-
-        holder.eventDescription.setText((eventList.get(position).getDescription()));
+        String id1 = eventList.get(position).select_drawable_name;
+        final int id = context.getResources().getIdentifier(id1, "drawable", context.getPackageName());
+        if(imageCheck == 1)
+        {
+            holder.eventImage.setImageResource(id);
+        }
+        else {
+            holder.eventDescription.setText((eventList.get(position).getDescription()));
+        }
     }
     @Override
     public int getItemCount() {
@@ -44,10 +54,12 @@ public class DescriptionRecyclerViewAdapter extends RecyclerView.Adapter<Descrip
 
     public class EventViewHolder extends RecyclerView.ViewHolder {
         TextView eventDescription;
+        ImageView eventImage;
 
         public EventViewHolder(View view) {
             super(view);
             eventDescription = view.findViewById(R.id.description);
+            eventImage = view.findViewById(R.id.imageDescription);
         }
     }
 

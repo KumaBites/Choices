@@ -19,6 +19,24 @@ public class Events {
     private String EventChoice3;
     private int enemyCheck;
     private int enemyId;
+    private int imageCheck;
+    private String imageName;
+
+    public int getImageCheck() {
+        return imageCheck;
+    }
+
+    public void setImageCheck(int imageCheck) {
+        this.imageCheck = imageCheck;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
 
     public int getEnemyId() {
         return enemyId;

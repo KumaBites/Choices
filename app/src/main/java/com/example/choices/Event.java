@@ -38,7 +38,7 @@ public class Event extends AppCompatActivity {
     private QuestionRecyclerViewAdapter qAdapter;
     private DescriptionRecyclerViewAdapter dAdapter;
     private TextView eventTitle;
-    private int enemyId, enemyCheck;
+    private int enemyId, enemyCheck, imageCheck;
     private double currentEventID ;
     EventsDatabase eDatabase;
     private static Event activity;
@@ -58,6 +58,7 @@ public class Event extends AppCompatActivity {
         currentEventID = Player.getCurrentEventID();
         enemyCheck = Player.getEnemyCheck();
         activity = this;
+        imageCheck = 0;
 
         if(currentEventID == 0.0)
         {
@@ -98,28 +99,64 @@ public class Event extends AppCompatActivity {
             descriptionEventList = new ArrayList<>();
 
             for (Events EM : allStoryEventList) {
-              Player.setNextEventID1(EM.getNextEventID1());
-              Player.setNextEventID2(EM.getNextEventID2());
-              Player.setNextEventID3(EM.getNextEventID3());
+
+                imageCheck = EM.getImageCheck();
+
+                if (imageCheck ==1)
+
+                {
+                    Player.setNextEventID1(EM.getNextEventID1());
+                    Player.setNextEventID2(EM.getNextEventID2());
+                    Player.setNextEventID3(EM.getNextEventID3());
 
 
-                enemyCheck = EM.getEnemyCheck();
-                Player.setEnemyCheck(enemyCheck);
+                    enemyCheck = EM.getEnemyCheck();
+                    Player.setEnemyCheck(enemyCheck);
 
-                enemyId = EM.getEnemyId();
-                EnemyEncounter.setEnemyId(enemyId);
+                    enemyId = EM.getEnemyId();
+                    EnemyEncounter.setEnemyId(enemyId);
 
-               eventTitle.setText(EM.getEventName());
+                    eventTitle.setText(EM.getEventName());
 
-                String eventChoice1 = EM.getEventChoice1();
-                String eventChoice2 = EM.getEventChoice2();
-                String eventChoice3 = EM.getEventChoice3();
-                String question = EM.getEventQuestion();
-                String description = EM.getEventDescription();
+                    String eventChoice1 = EM.getEventChoice1();
+                    String eventChoice2 = EM.getEventChoice2();
+                    String eventChoice3 = EM.getEventChoice3();
+                    String question = EM.getEventQuestion();
+                    String description = "";
+                    String image = EM.getImageName();
 
-                currentEventListChoices.add(new EventModel( eventChoice1, eventChoice2, eventChoice3));
-                questionEventList.add(new QuestionModel(question));
-                descriptionEventList.add((new DescriptionModel(description)));
+                    currentEventListChoices.add(new EventModel( eventChoice1, eventChoice2, eventChoice3));
+                    questionEventList.add(new QuestionModel(question));
+                    descriptionEventList.add((new DescriptionModel(description, image)));
+                }
+                else
+                {
+
+                    Player.setNextEventID1(EM.getNextEventID1());
+                    Player.setNextEventID2(EM.getNextEventID2());
+                    Player.setNextEventID3(EM.getNextEventID3());
+
+
+                    enemyCheck = EM.getEnemyCheck();
+                    Player.setEnemyCheck(enemyCheck);
+
+                    enemyId = EM.getEnemyId();
+                    EnemyEncounter.setEnemyId(enemyId);
+
+                    eventTitle.setText(EM.getEventName());
+
+                    String eventChoice1 = EM.getEventChoice1();
+                    String eventChoice2 = EM.getEventChoice2();
+                    String eventChoice3 = EM.getEventChoice3();
+                    String question = EM.getEventQuestion();
+                    String description = EM.getEventDescription();
+                    String image = "";
+
+                    currentEventListChoices.add(new EventModel( eventChoice1, eventChoice2, eventChoice3));
+                    questionEventList.add(new QuestionModel(question));
+                    descriptionEventList.add((new DescriptionModel(description, image)));
+                }
+
 
             }
 
@@ -129,7 +166,7 @@ public class Event extends AppCompatActivity {
             qAdapter = new QuestionRecyclerViewAdapter(questionEventList, this);
             eventQuestion.setAdapter(qAdapter);
 
-            dAdapter = new DescriptionRecyclerViewAdapter(descriptionEventList, this);
+            dAdapter = new DescriptionRecyclerViewAdapter(descriptionEventList, this, imageCheck);
             eventDescription.setAdapter(dAdapter);
 
         }
