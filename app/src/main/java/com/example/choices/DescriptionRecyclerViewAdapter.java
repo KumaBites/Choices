@@ -42,6 +42,8 @@ public class DescriptionRecyclerViewAdapter extends RecyclerView.Adapter<Descrip
         if(imageCheck == 1)
         {
             holder.eventImage.setImageResource(id);
+            holder.eventImageText.setText((eventList.get(position).getDescription()));
+
         }
         else {
             holder.eventDescription.setText((eventList.get(position).getDescription()));
@@ -55,11 +57,13 @@ public class DescriptionRecyclerViewAdapter extends RecyclerView.Adapter<Descrip
     public class EventViewHolder extends RecyclerView.ViewHolder {
         TextView eventDescription;
         ImageView eventImage;
+        TextView eventImageText;
 
         public EventViewHolder(View view) {
             super(view);
             eventDescription = view.findViewById(R.id.description);
             eventImage = view.findViewById(R.id.imageDescription);
+            eventImageText = view.findViewById(R.id.imageText);
         }
     }
 

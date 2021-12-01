@@ -122,7 +122,7 @@ public class Event extends AppCompatActivity {
                     String eventChoice2 = EM.getEventChoice2();
                     String eventChoice3 = EM.getEventChoice3();
                     String question = EM.getEventQuestion();
-                    String description = "";
+                    String description = "アーロンさん：　アメリカじん　じゃ　ありません。インドじです。：　アメリカじん　じゃ　ありません。インドじです。：　アメリカじん　じゃ　ありません。インドじです。：　アメリカじん　じゃ　ありません。インドじです。：　アメリカじん　じゃ　ありません。インドじです。：　アメリカじん　じゃ　ありません。インドじです。：　アメリカじん　じゃ　ありません。インドじです。";
                     String image = EM.getImageName();
 
                     currentEventListChoices.add(new EventModel( eventChoice1, eventChoice2, eventChoice3));
@@ -199,6 +199,7 @@ public class Event extends AppCompatActivity {
 
         }
     }
+
 
 
     public void quit (View view){
