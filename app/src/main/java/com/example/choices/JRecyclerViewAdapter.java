@@ -97,9 +97,9 @@ public class JRecyclerViewAdapter extends RecyclerView.Adapter<JRecyclerViewAdap
                     Intent newStory = new Intent(context, Event.class);
                     context.startActivity(newStory);
                     Player.setCurrentEventID(eventId);
-                    JToE.getInstance().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                    //JToE.getInstance().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                     //Removes from the back stack and destroys it
-                    JToE.getInstance().finish();
+                    //JToE.getInstance().finish();
 
                 }
             });

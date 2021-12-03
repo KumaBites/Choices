@@ -172,7 +172,7 @@ public class Event extends AppCompatActivity {
         }
     }
     private void storyEndAlert() {
-        final Intent finish = new Intent(this, JToE.class);
+        final Intent finish = new Intent(this, JMenu.class);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("You have completed your story! Why not try one of the other stories?");
@@ -204,7 +204,7 @@ public class Event extends AppCompatActivity {
 
     public void quit (View view){
 
-        Intent quit = new Intent(this, JToE.class);
+        Intent quit = new Intent(this, JMenu.class);
         startActivity(quit);
         finish();
 

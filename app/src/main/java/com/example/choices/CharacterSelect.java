@@ -118,7 +118,7 @@ public class CharacterSelect extends AppCompatActivity {
      * @param view
      */
     public void quitToMainMenu(View view){
-        Intent quit = new Intent(this, JToE.class);
+        Intent quit = new Intent(this, JMenu.class);
         startActivity(quit);
         finish();
         //overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left);

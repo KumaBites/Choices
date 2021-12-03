@@ -103,11 +103,11 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
         builder.setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent newMenu1 = new Intent(context, JToE.class);
+                Intent newMenu1 = new Intent(context, JMenu.class);
                 context.startActivity(newMenu1);
-                JToE.getInstance().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+               // JToE.getInstance().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                 //Removes from the back stack and destroys it
-                JToE.getInstance().finish();
+               // JToE.getInstance().finish();
 
             }
         });
