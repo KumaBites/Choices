@@ -14,8 +14,8 @@ import java.util.List;
 public class JToE extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
-    private JToERecyclerViewAdapter mAdapter;
-    private List<JToEModel> debtListArray;
+    private JRecyclerViewAdapter mAdapter;
+    private List<JModel> debtListArray;
     private static JToE activityHandle = null;
 
     @Override
@@ -32,18 +32,18 @@ public class JToE extends AppCompatActivity {
 
         //Populate the list with the game names
         debtListArray = new ArrayList<>();
-        debtListArray.add(new JToEModel("Japanese to English"));
-        debtListArray.add(new JToEModel("Japanese Only"));
-        debtListArray.add(new JToEModel("Information about app"));
-        debtListArray.add(new JToEModel("Credits and thank yous"));
+        debtListArray.add(new JModel("Japanese to English"));
+        debtListArray.add(new JModel("Japanese Only"));
+        debtListArray.add(new JModel("Information about app"));
+        debtListArray.add(new JModel("Credits and thank yous"));
 
-        debtListArray.add(new JToEModel("Rhothomir's Crown"));
-        debtListArray.add(new JToEModel("Good Morning!"));
-        debtListArray.add(new JToEModel("Who is this?"));
+        debtListArray.add(new JModel("Rhothomir's Crown"));
+        debtListArray.add(new JModel("Good Morning!"));
+        debtListArray.add(new JModel("Who is this?"));
 
 
         //set adapter to recyclerview
-        mAdapter = new JToERecyclerViewAdapter(debtListArray,this);
+        mAdapter = new JRecyclerViewAdapter(debtListArray,this);
         mRecyclerView.setAdapter(mAdapter);
 
     }

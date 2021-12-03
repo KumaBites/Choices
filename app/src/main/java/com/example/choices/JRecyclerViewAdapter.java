@@ -15,14 +15,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 
-public class JToERecyclerViewAdapter extends RecyclerView.Adapter<JToERecyclerViewAdapter.StoryViewHolder> {
+public class JRecyclerViewAdapter extends RecyclerView.Adapter<JRecyclerViewAdapter.StoryViewHolder> {
         //Local variables to store list data and context.
-        private List<JToEModel> storyList;
+        private List<JModel> storyList;
         Context context;
 
 
         //Take the List and the context and stores them in local variables.
-        public JToERecyclerViewAdapter(List<JToEModel> storyList, Context context) {
+        public JRecyclerViewAdapter(List<JModel> storyList, Context context) {
             this.storyList = storyList;
             this.context = context;
         }
@@ -48,17 +48,23 @@ public class JToERecyclerViewAdapter extends RecyclerView.Adapter<JToERecyclerVi
                     //checks the story name and the sets the event ID
                     switch (storyName)
                     {
-                        case "Rhothomir's Crown":
+                        case "JToE1":
                             double eventId = 2.0;
-                            startStory(storyName,eventId);
+                            Intent newStory1 = new Intent(context, Event.class);
+                            context.startActivity(newStory1);
+                            Player.setCurrentEventID(eventId);
                             break;
-                        case "Good Morning!":
+                        case "JToE2":
                             double eventId2 = 3.0;
-                            startStory(storyName,eventId2);
+                            Intent newStory2 = new Intent(context, Event.class);
+                            context.startActivity(newStory2);
+                            Player.setCurrentEventID(eventId2);
                             break;
-                        case "Who is this?":
+                        case "JToE3":
                             double eventId3 = 1.0;
-                            startStory(storyName,eventId3);
+                            Intent newStory3 = new Intent(context, Event.class);
+                            context.startActivity(newStory3);
+                            Player.setCurrentEventID(eventId3);
                             break;
 
                     }

@@ -43,8 +43,9 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
                     switch (storyName)
                     {
                         case "Japanese to English":
-                            Intent newMenu1 = new Intent(context, JToE.class);
+                            Intent newMenu1 = new Intent(context, JMenu.class);
                             context.startActivity(newMenu1);
+                            MainModel.setName("Japanese to English");
 
                          //   JToE.getInstance().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                             //Removes from the back stack and destroys it
@@ -53,6 +54,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
                         case "Japanese Only":
                             Intent newMenu2 = new Intent(context, JMenu.class);
                             context.startActivity(newMenu2);
+                            MainModel.setName("Japanese Only");
                           //  JToE.getInstance().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                             //Removes from the back stack and destroys it
                            // JToE.getInstance().finish();

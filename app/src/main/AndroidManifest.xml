@@ -14,7 +14,7 @@
         <activity android:name=".Rhothomir" ></activity>
         <activity android:name=".Battle" ></activity>
         <activity android:name=".Event" ></activity>
-        <activity android:name=".JToE" ></activity>
+        <activity android:name=".JMenu" ></activity>
         <activity android:name=".Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -46,7 +46,7 @@ public class CreditsAndInfo extends AppCompatActivity {
                 break;
         }
     }
-    
+
     public void quitToMainMenu(View view){
         Intent quit = new Intent(this, JToE.class);
         startActivity(quit);

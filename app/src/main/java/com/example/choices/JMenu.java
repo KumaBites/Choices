@@ -14,8 +14,8 @@ import java.util.List;
 public class JMenu extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
-    private JToERecyclerViewAdapter mAdapter;
-    private List<JToEModel> debtListArray;
+    private JRecyclerViewAdapter mAdapter;
+    private List<JModel> debtListArray;
     private static JMenu activityHandle = null;
 
     @Override
@@ -32,19 +32,29 @@ public class JMenu extends AppCompatActivity {
 
         //Populate the list with the game names
         debtListArray = new ArrayList<>();
-        debtListArray.add(new JToEModel("Japanese to English"));
-        debtListArray.add(new JToEModel("Japanese Only"));
-        debtListArray.add(new JToEModel("Information about app"));
-        debtListArray.add(new JToEModel("Credits and thank yous"));
-
-        debtListArray.add(new JToEModel("Rhothomir's Crown"));
-        debtListArray.add(new JToEModel("Good Morning!"));
-        debtListArray.add(new JToEModel("Who is this?"));
-
+        String name = MainModel.getName();
+        switch (name) {
+            case "Japanese to English":
+                debtListArray.add(new JModel("JToE1"));
+                debtListArray.add(new JModel("JToE2"));
+                debtListArray.add(new JModel("JToE3"));
+                //set adapter to recyclerview
+                mAdapter = new JRecyclerViewAdapter(debtListArray, this);
+                //set adapter to recyclerview
+                mRecyclerView.setAdapter(mAdapter);
+                break;
+            case "Japanese Only":
+                debtListArray.add(new JModel("J1only"));
+                debtListArray.add(new JModel("J2only"));
+                debtListArray.add(new JModel("J3only"));
+                mAdapter = new JRecyclerViewAdapter(debtListArray, this);
+                //set adapter to recyclerview
+                mRecyclerView.setAdapter(mAdapter);
+                break;
+        }
 
         //set adapter to recyclerview
-        mAdapter = new JToERecyclerViewAdapter(debtListArray,this);
-        mRecyclerView.setAdapter(mAdapter);
+
 
     }
     //Exits app
