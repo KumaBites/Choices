@@ -13,10 +13,10 @@ import java.util.List;
 
 public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRecyclerViewAdapter.EventViewHolder> {
 
-    private List<QuestionModel> eventList;
+    private List<MainModel> eventList;
     Context context;
 
-    public QuestionRecyclerViewAdapter(List<QuestionModel> eventList, Context context) {
+    public QuestionRecyclerViewAdapter(List<MainModel> eventList, Context context) {
         this.eventList = eventList;
         this.context = context;
     }
@@ -32,7 +32,7 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
     @Override
     public void onBindViewHolder(QuestionRecyclerViewAdapter.EventViewHolder holder, final int position) {
 
-        holder.questionRecyclerView.setText("Question :"+(eventList.get(position).getQuestion()));
+        holder.questionRecyclerView.setText("Question :"+(eventList.get(position).getMain()));
     }
     @Override
     public int getItemCount() {

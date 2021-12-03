@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/lwood3"
-    tools:context=".CreditsAndInfo">
+    tools:context=".Main">
 
     <Button
         android:id="@+id/button3"
@@ -14,14 +14,14 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="4dp"
-        android:onClick="quitToMainMenu"
+        android:onClick="quitToMain"
         android:text="@string/quitApp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/creditsRecyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/storyRecyclerView" />
 
     <TextView
-        android:id="@+id/creditsView"
+        android:id="@+id/welcomeText"
         android:layout_width="325dp"
         android:layout_height="78dp"
         android:layout_marginTop="52dp"
@@ -32,12 +32,12 @@
         android:textStyle="bold"
         android:gravity="center"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/creditsRecyclerView"
+        app:layout_constraintBottom_toTopOf="@+id/storyRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/creditsRecyclerView"
+        android:id="@+id/mainRecyclerView"
         android:layout_width="317dp"
         android:layout_height="426dp"
         android:layout_marginStart="41dp"
@@ -46,5 +46,5 @@
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/creditsView" />
+        app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

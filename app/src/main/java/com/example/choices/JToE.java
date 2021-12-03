@@ -11,12 +11,12 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StorySelect extends AppCompatActivity {
+public class JToE extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
-    private StoryRecyclerViewAdapter mAdapter;
-    private List<StorySelectModel> debtListArray;
-    private static StorySelect activityHandle = null;
+    private JToERecyclerViewAdapter mAdapter;
+    private List<JToEModel> debtListArray;
+    private static JToE activityHandle = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +32,18 @@ public class StorySelect extends AppCompatActivity {
 
         //Populate the list with the game names
         debtListArray = new ArrayList<>();
-        debtListArray.add(new StorySelectModel("Rhothomir's Crown"));
-        debtListArray.add(new StorySelectModel("Good Morning!"));
-        debtListArray.add(new StorySelectModel("Who is this?"));
+        debtListArray.add(new JToEModel("Japanese to English"));
+        debtListArray.add(new JToEModel("Japanese Only"));
+        debtListArray.add(new JToEModel("Information about app"));
+        debtListArray.add(new JToEModel("Credits and thank yous"));
+
+        debtListArray.add(new JToEModel("Rhothomir's Crown"));
+        debtListArray.add(new JToEModel("Good Morning!"));
+        debtListArray.add(new JToEModel("Who is this?"));
 
 
         //set adapter to recyclerview
-        mAdapter = new StoryRecyclerViewAdapter(debtListArray,this);
+        mAdapter = new JToERecyclerViewAdapter(debtListArray,this);
         mRecyclerView.setAdapter(mAdapter);
 
     }
@@ -51,7 +56,7 @@ public class StorySelect extends AppCompatActivity {
     }
 
     //Returns the instance of the current activity which will be used in the recyclerview to destroy the current activity
-    public static StorySelect getInstance(){
+    public static JToE getInstance(){
         return activityHandle;
     }
 

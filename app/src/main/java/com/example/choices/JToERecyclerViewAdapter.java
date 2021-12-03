@@ -15,14 +15,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 
-public class StoryRecyclerViewAdapter extends RecyclerView.Adapter<StoryRecyclerViewAdapter.StoryViewHolder> {
+public class JToERecyclerViewAdapter extends RecyclerView.Adapter<JToERecyclerViewAdapter.StoryViewHolder> {
         //Local variables to store list data and context.
-        private List<StorySelectModel> storyList;
+        private List<JToEModel> storyList;
         Context context;
 
 
         //Take the List and the context and stores them in local variables.
-        public StoryRecyclerViewAdapter(List<StorySelectModel> storyList, Context context) {
+        public JToERecyclerViewAdapter(List<JToEModel> storyList, Context context) {
             this.storyList = storyList;
             this.context = context;
         }
@@ -40,11 +40,11 @@ public class StoryRecyclerViewAdapter extends RecyclerView.Adapter<StoryRecycler
         @Override
         public void onBindViewHolder(StoryViewHolder holder, final int position) {
 
-            holder.txtStory_Name.setText("Lets Begin The Tale Of: "+(storyList.get(position).getStoryName()));
+            holder.txtStory_Name.setText("Lets Begin The Tale Of: "+(storyList.get(position).getMenu()));
             holder.txtStory_Name.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String storyName = storyList.get(position).getStoryName();
+                    String storyName = storyList.get(position).getMenu();
                     //checks the story name and the sets the event ID
                     switch (storyName)
                     {
@@ -91,9 +91,9 @@ public class StoryRecyclerViewAdapter extends RecyclerView.Adapter<StoryRecycler
                     Intent newStory = new Intent(context, Event.class);
                     context.startActivity(newStory);
                     Player.setCurrentEventID(eventId);
-                    StorySelect.getInstance().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                    JToE.getInstance().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                     //Removes from the back stack and destroys it
-                    StorySelect.getInstance().finish();
+                    JToE.getInstance().finish();
 
                 }
             });

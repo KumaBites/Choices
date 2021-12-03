@@ -154,7 +154,7 @@ public class Battle extends AppCompatActivity {
      *
      */
   public void battleCheck(){
-      final Intent died = new Intent(this, StorySelect.class);
+      final Intent died = new Intent(this, JToE.class);
       final Intent survive = new Intent(this, Event.class);
       final int eHCheck = EnemyEncounter.getEnemy_health();
       final int pHCheck = Player.getEndurance();

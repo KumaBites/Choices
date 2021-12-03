@@ -9,6 +9,7 @@ public class Events {
     @PrimaryKey
     private double EventId;
     private String EventName;
+    private int UnitNumber;
     private String EventDescription;
     private String EventQuestion;
     private double NextEventID1;
@@ -17,41 +18,49 @@ public class Events {
     private String EventChoice2;
     private double NextEventID3;
     private String EventChoice3;
-    private int enemyCheck;
-    private int enemyId;
-    private int imageCheck;
-    private String imageName;
+    private int EnemyCheck;
+    private int EnemyId;
+    private int ImageCheck;
+    private String ImageName;
+
+    public int getUnitNumber() {
+        return UnitNumber;
+    }
+
+    public void setUnitNumber(int unitNumber) {
+        UnitNumber = unitNumber;
+    }
 
     public int getImageCheck() {
-        return imageCheck;
+        return ImageCheck;
     }
 
     public void setImageCheck(int imageCheck) {
-        this.imageCheck = imageCheck;
+        this.ImageCheck = imageCheck;
     }
 
     public String getImageName() {
-        return imageName;
+        return ImageName;
     }
 
     public void setImageName(String imageName) {
-        this.imageName = imageName;
+        this.ImageName = imageName;
     }
 
     public int getEnemyId() {
-        return enemyId;
+        return EnemyId;
     }
 
     public void setEnemyId(int enemyId) {
-        this.enemyId = enemyId;
+        this.EnemyId = enemyId;
     }
 
     public int getEnemyCheck() {
-        return enemyCheck;
+        return EnemyCheck;
     }
 
     public void setEnemyCheck(int enemyCheck) {
-        this.enemyCheck = enemyCheck;
+        this.EnemyCheck = enemyCheck;
     }
 
     public double getEventId() {

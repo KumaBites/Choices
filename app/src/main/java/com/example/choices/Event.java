@@ -29,7 +29,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class Event extends AppCompatActivity {
     private RecyclerView event, eventDescription, eventQuestion;
     private List<EventModel> currentEventListChoices;
-    private List<QuestionModel> questionEventList;
+    private List<MainModel> questionEventList;
     private List<DescriptionModel> descriptionEventList;
     private List<String> currentEventdescription;
     private List<Events> allStoryEventList;
@@ -126,7 +126,7 @@ public class Event extends AppCompatActivity {
                     String image = EM.getImageName();
 
                     currentEventListChoices.add(new EventModel( eventChoice1, eventChoice2, eventChoice3));
-                    questionEventList.add(new QuestionModel(question));
+                    questionEventList.add(new MainModel(question));
                     descriptionEventList.add((new DescriptionModel(description, image)));
                 }
                 else
@@ -153,7 +153,7 @@ public class Event extends AppCompatActivity {
                     String image = "";
 
                     currentEventListChoices.add(new EventModel( eventChoice1, eventChoice2, eventChoice3));
-                    questionEventList.add(new QuestionModel(question));
+                    questionEventList.add(new MainModel(question));
                     descriptionEventList.add((new DescriptionModel(description, image)));
                 }
 
@@ -172,7 +172,7 @@ public class Event extends AppCompatActivity {
         }
     }
     private void storyEndAlert() {
-        final Intent finish = new Intent(this, StorySelect.class);
+        final Intent finish = new Intent(this, JToE.class);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("You have completed your story! Why not try one of the other stories?");
@@ -204,7 +204,7 @@ public class Event extends AppCompatActivity {
 
     public void quit (View view){
 
-        Intent quit = new Intent(this, StorySelect.class);
+        Intent quit = new Intent(this, JToE.class);
         startActivity(quit);
         finish();
 
