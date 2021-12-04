@@ -9,6 +9,7 @@ public class Events {
     @PrimaryKey
     private double EventId;
     private String EventName;
+    private String EventNameE;
     private int UnitNumber;
     private String EventDescription;
     private String EventQuestion;
@@ -25,6 +26,14 @@ public class Events {
     private int EnemyId;
     private int ImageCheck;
     private String ImageName;
+
+    public String getEventNameE() {
+        return EventNameE;
+    }
+
+    public void setEventNameE(String eventNameE) {
+        EventNameE = eventNameE;
+    }
 
     public int getUnitNumber() {
         return UnitNumber;

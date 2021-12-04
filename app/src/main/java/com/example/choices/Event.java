@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.choices.ENTITY.Enemy;
 import com.example.choices.ENTITY.Events;
 
 
@@ -37,7 +36,7 @@ public class Event extends AppCompatActivity {
     private DescriptionRecyclerViewAdapter dAdapter;
     private TextView eventTitle;
     private int enemyId, enemyCheck, imageCheck;
-    private double currentEventID ;
+    private double currentEventID;
     EventsDatabase eDatabase;
     private static Event activity;
 
@@ -58,177 +57,56 @@ public class Event extends AppCompatActivity {
         activity = this;
         imageCheck = 0;
 
-        if(currentEventID == 0.0)
-        {
+        if (currentEventID == 0.0) {
 
-        storyEndAlert();
+            storyEndAlert();
 
-        }
-        else if(enemyCheck==1){
+        } else if (enemyCheck == 1) {
             Intent battle = new Intent(this, Battle.class);
             startActivity(battle);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             finish();
 
-            }
-
-        else {
+        } else {
             event.setLayoutManager(new LinearLayoutManager(this));
             eventQuestion.setLayoutManager(new LinearLayoutManager((this)));
             eventDescription.setLayoutManager(new LinearLayoutManager((this)));
 
-            ExecutorService executorService = Executors.newSingleThreadExecutor();
-            getFantasyEventCallable newEvent = new getFantasyEventCallable();
-            Future<List<Events>> future = executorService.submit(newEvent);
-            List<Events> result = null;
-            try {
-                result = future.get();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+//Checks static variable to check which data to get from the database, English or Japanese translation.
+
+            if (MainModel.getName().equals("Japanese Only")) {
+                eAdapter = new EventRecyclerViewAdapter(getAllEventsJ().getEventList(), this);
+                event.setAdapter(eAdapter);
+
+                qAdapter = new QuestionRecyclerViewAdapter(getAllEventsJ().getQuestionList(),this);
+                eventQuestion.setAdapter(qAdapter);
+
+                dAdapter = new DescriptionRecyclerViewAdapter(getAllEventsJ().getdList(),this, imageCheck);
+                eventDescription.setAdapter(dAdapter);
+            } else if ((MainModel.getName().equals("Japanese to English"))) {
+
+
+                eAdapter = new EventRecyclerViewAdapter(getAllEventsE().getEventList(), this);
+                event.setAdapter(eAdapter);
+
+                qAdapter = new QuestionRecyclerViewAdapter(getAllEventsE().getQuestionList(),this);
+                eventQuestion.setAdapter(qAdapter);
+
+                dAdapter = new DescriptionRecyclerViewAdapter(getAllEventsE().getdList(),this, imageCheck);
+                eventDescription.setAdapter(dAdapter);
             }
-
-
-
-            allStoryEventList =result;
-            currentEventListChoices = new ArrayList<>();
-            questionEventList = new ArrayList<>();
-            descriptionEventList = new ArrayList<>();
-
-            for (Events EM : allStoryEventList) {
-
-                imageCheck = EM.getImageCheck();
-
-                if (imageCheck ==1 && MainModel.getName().equals("Japanese Only"))
-
-                {
-                    Player.setNextEventID1(EM.getNextEventID1());
-                    Player.setNextEventID2(EM.getNextEventID2());
-                    Player.setNextEventID3(EM.getNextEventID3());
-
-                    enemyCheck = EM.getEnemyCheck();
-                    Player.setEnemyCheck(enemyCheck);
-
-                    enemyId = EM.getEnemyId();
-                    EnemyEncounter.setEnemyId(enemyId);
-
-                    eventTitle.setText(EM.getEventName());
-
-                    String eventChoice1 = EM.getEventChoice1();
-                    String eventChoice2 = EM.getEventChoice2();
-                    String eventChoice3 = EM.getEventChoice3();
-                    String question = EM.getEventQuestion();
-                    String description = EM.getEventDescription();
-                    String image = EM.getImageName();
-
-                    currentEventListChoices.add(new EventModel( eventChoice1, eventChoice2, eventChoice3));
-                    questionEventList.add(new MainModel(question));
-                    descriptionEventList.add((new DescriptionModel(description, image)));
-                }
-                else if((imageCheck ==1 && MainModel.getName().equals("Japanese to English")))
-                    {
-                        Player.setNextEventID1(EM.getNextEventID1());
-                        Player.setNextEventID2(EM.getNextEventID2());
-                        Player.setNextEventID3(EM.getNextEventID3());
-
-                        enemyCheck = EM.getEnemyCheck();
-                        Player.setEnemyCheck(enemyCheck);
-
-                        enemyId = EM.getEnemyId();
-                        EnemyEncounter.setEnemyId(enemyId);
-
-                        eventTitle.setText(EM.getEventName());
-
-                        String eventChoice1 = EM.getEventChoice1E();
-                        String eventChoice2 = EM.getEventChoice2E();
-                        String eventChoice3 = EM.getEventChoice3E();
-                        String question = EM.getEventQuestion();
-                        String description = EM.getEventDescription();
-                        String image = EM.getImageName();
-
-                        currentEventListChoices.add(new EventModel( eventChoice1, eventChoice2, eventChoice3));
-                        questionEventList.add(new MainModel(question));
-                        descriptionEventList.add((new DescriptionModel(description, image)));
-                }
-
-                else if((imageCheck ==0 && MainModel.getName().equals("Japanese Only")))
-                {
-
-                    Player.setNextEventID1(EM.getNextEventID1());
-                    Player.setNextEventID2(EM.getNextEventID2());
-                    Player.setNextEventID3(EM.getNextEventID3());
-
-
-                    enemyCheck = EM.getEnemyCheck();
-                    Player.setEnemyCheck(enemyCheck);
-
-                    enemyId = EM.getEnemyId();
-                    EnemyEncounter.setEnemyId(enemyId);
-
-                    eventTitle.setText(EM.getEventName());
-
-                    String eventChoice1 = EM.getEventChoice1();
-                    String eventChoice2 = EM.getEventChoice2();
-                    String eventChoice3 = EM.getEventChoice3();
-                    String question = EM.getEventQuestion();
-                    String description = EM.getEventDescription();
-                    String image = "";
-
-                    currentEventListChoices.add(new EventModel( eventChoice1, eventChoice2, eventChoice3));
-                    questionEventList.add(new MainModel(question));
-                    descriptionEventList.add((new DescriptionModel(description, image)));
-                }
-                else if((imageCheck ==0 && MainModel.getName().equals("Japanese to English"))){
-
-                    Player.setNextEventID1(EM.getNextEventID1());
-                    Player.setNextEventID2(EM.getNextEventID2());
-                    Player.setNextEventID3(EM.getNextEventID3());
-
-
-                    enemyCheck = EM.getEnemyCheck();
-                    Player.setEnemyCheck(enemyCheck);
-
-                    enemyId = EM.getEnemyId();
-                    EnemyEncounter.setEnemyId(enemyId);
-
-                    eventTitle.setText(EM.getEventName());
-
-                    String eventChoice1 = EM.getEventChoice1E();
-                    String eventChoice2 = EM.getEventChoice2E();
-                    String eventChoice3 = EM.getEventChoice3E();
-                    String question = EM.getEventQuestion();
-                    String description = EM.getEventDescription();
-                    String image = "";
-
-                    currentEventListChoices.add(new EventModel( eventChoice1, eventChoice2, eventChoice3));
-                    questionEventList.add(new MainModel(question));
-                    descriptionEventList.add((new DescriptionModel(description, image)));
-
-
-
-
-                }
-
-
-            }
-
-            eAdapter = new EventRecyclerViewAdapter(currentEventListChoices, this);
-            event.setAdapter(eAdapter);
-
-            qAdapter = new QuestionRecyclerViewAdapter(questionEventList, this);
-            eventQuestion.setAdapter(qAdapter);
-
-            dAdapter = new DescriptionRecyclerViewAdapter(descriptionEventList, this, imageCheck);
-            eventDescription.setAdapter(dAdapter);
 
         }
+
+
+
     }
+//Checks event id, if its 0.0 then this message will appear and send the user to the main activity.
     private void storyEndAlert() {
         final Intent finish = new Intent(this, JMenu.class);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("You have completed your story! Why not try one of the other stories?");
+        builder.setMessage("You have completed your reading! Why not try one of the other stories?");
         builder.setCancelable(false);
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
@@ -240,38 +118,133 @@ public class Event extends AppCompatActivity {
         });
         builder.show();
     }
-    private class getFantasyEventCallable implements Callable<List<Events>>
 
-    {
+    private class getEventCallable implements Callable<List<Events>> {
         List<Events> rList;
+
         @Override
-        public List<Events> call(){
-           rList = eDatabase.fantasyDao().getSelectEvent(currentEventID);
+        public List<Events> call() {
+            rList = eDatabase.fantasyDao().getSelectEvent(currentEventID);
 
             return rList;
 
         }
     }
+    //Gets the English data from the database
 
-public void image(){
+    public getArrayData getAllEventsE() {
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        getEventCallable newEvent = new getEventCallable();
+        Future<List<Events>> future = executorService.submit(newEvent);
+        List<Events> result = null;
+        try {
+            result = future.get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-}
 
-    public void quit (View view){
+        allStoryEventList = result;
+        currentEventListChoices = new ArrayList<>();
+        questionEventList = new ArrayList<>();
+        descriptionEventList = new ArrayList<>();
+        for (Events EM : allStoryEventList) {
+            imageCheck = EM.getImageCheck();
 
-        Intent quit = new Intent(this, JMenu.class);
-        startActivity(quit);
-        finish();
+            Player.setNextEventID1(EM.getNextEventID1());
+            Player.setNextEventID2(EM.getNextEventID2());
+            Player.setNextEventID3(EM.getNextEventID3());
 
+            enemyCheck = EM.getEnemyCheck();
+            Player.setEnemyCheck(enemyCheck);
+
+            enemyId = EM.getEnemyId();
+            EnemyEncounter.setEnemyId(enemyId);
+
+            eventTitle.setText(EM.getEventName());
+
+            String eventChoice1 = EM.getEventChoice1E();
+            String eventChoice2 = EM.getEventChoice2E();
+            String eventChoice3 = EM.getEventChoice3E();
+            String question = EM.getEventQuestion();
+            String description = EM.getEventDescription();
+            String image = EM.getImageName();
+
+            currentEventListChoices.add(new EventModel(eventChoice1, eventChoice2, eventChoice3));
+            questionEventList.add(new MainModel(question));
+            descriptionEventList.add((new DescriptionModel(description, image)));
+        }
+        getArrayData arrayData = new getArrayData(currentEventListChoices,questionEventList,descriptionEventList);
+        return arrayData;
     }
-    @SuppressLint("MissingSuperCall")
-    @Override
-    public void onBackPressed() {
+    //Gets the Japanese data from the database
+        public getArrayData getAllEventsJ ()
+        {
+            ExecutorService executorService = Executors.newSingleThreadExecutor();
+            getEventCallable newEvent = new getEventCallable();
+            Future<List<Events>> future = executorService.submit(newEvent);
+            List<Events> result = null;
+            try {
+                result = future.get();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
+
+            allStoryEventList = result;
+            currentEventListChoices = new ArrayList<>();
+            questionEventList = new ArrayList<>();
+            descriptionEventList = new ArrayList<>();
+            for (Events EM : allStoryEventList) {
+
+                imageCheck = EM.getImageCheck();
+                Player.setNextEventID1(EM.getNextEventID1());
+                Player.setNextEventID2(EM.getNextEventID2());
+                Player.setNextEventID3(EM.getNextEventID3());
+
+                enemyCheck = EM.getEnemyCheck();
+                Player.setEnemyCheck(enemyCheck);
+
+                enemyId = EM.getEnemyId();
+                EnemyEncounter.setEnemyId(enemyId);
+
+                eventTitle.setText(EM.getEventName());
+
+                String eventChoice1 = EM.getEventChoice1();
+                String eventChoice2 = EM.getEventChoice2();
+                String eventChoice3 = EM.getEventChoice3();
+                String question = EM.getEventQuestion();
+                String description = EM.getEventDescription();
+                String image = EM.getImageName();
+
+                currentEventListChoices.add(new EventModel(eventChoice1, eventChoice2, eventChoice3));
+                questionEventList.add(new MainModel(question));
+                descriptionEventList.add((new DescriptionModel(description, image)));
+            }
+            getArrayData arrayData = new getArrayData(currentEventListChoices,questionEventList,descriptionEventList);
+            return arrayData;
+        }
+
+        public void quit (View view){
+
+            Intent quit = new Intent(this, JMenu.class);
+            startActivity(quit);
+            finish();
+
+        }
+        @SuppressLint("MissingSuperCall")
+        @Override
+        public void onBackPressed () {
+
+        }
+        //Gets a handle on the current activity to be destroyed in the adapter view
+        public static Activity getInstance () {
+            return activity;
+        }
     }
-    //Gets a handle on the current activity to be destroyed in the adapter view
-    public static Activity getInstance(){
-        return  activity;
-    }
-}
+
 

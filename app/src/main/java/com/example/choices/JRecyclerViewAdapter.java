@@ -12,13 +12,22 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.choices.ENTITY.Events;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 
 public class JRecyclerViewAdapter extends RecyclerView.Adapter<JRecyclerViewAdapter.StoryViewHolder> {
         //Local variables to store list data and context.
         private List<JModel> storyList;
         Context context;
+
 
 
         //Take the List and the context and stores them in local variables.
@@ -45,37 +54,8 @@ public class JRecyclerViewAdapter extends RecyclerView.Adapter<JRecyclerViewAdap
                 @Override
                 public void onClick(View v) {
                     String storyName = storyList.get(position).getMenu();
-                    switch (storyName)
-                    {
-                        //japanese language only
-                        case "あの　かたは　どなた　ですか。":
-                            double eventId = 1.0;
-                            startStory(storyName, eventId);
-                            break;
-                        case "アさん　と　オさん。":
-                            double eventId2 = 2.0;
-                            startStory(storyName, eventId2);
-                            break;
-                        case "おはようございます。":
-                            double eventId3 = 3.0;
-                            startStory(storyName, eventId3);
-                            break;
-                    //Japanese language and English answers
-                        case "Who is this person?":
-                            double eventIdE = 1.0;
-                            startStory(storyName, eventIdE);
-                            break;
-                        case "Mr A and Mr O.":
-                            double eventId2E = 2.0;
-                            startStory(storyName, eventId2E);
-                            break;
-                        case "Good Morning.":
-                            double eventId3E = 3.0;
-                            startStory(storyName, eventId3E);
-                            break;
-
-                    }
-
+                    double newEventId = storyList.get(position).getMenuId();
+                    startStory(storyName,newEventId);
                 }
             });
         }
@@ -111,5 +91,6 @@ public class JRecyclerViewAdapter extends RecyclerView.Adapter<JRecyclerViewAdap
             });
             builder.show();
         }
+
     }
 
