@@ -14,10 +14,13 @@ public class Events {
     private String EventQuestion;
     private double NextEventID1;
     private String EventChoice1;
+    private String EventChoice1E;
     private double NextEventID2;
     private String EventChoice2;
+    private String EventChoice2E;
     private double NextEventID3;
     private String EventChoice3;
+    private String EventChoice3E;
     private int EnemyCheck;
     private int EnemyId;
     private int ImageCheck;
@@ -29,6 +32,30 @@ public class Events {
 
     public void setUnitNumber(int unitNumber) {
         UnitNumber = unitNumber;
+    }
+
+    public String getEventChoice1E() {
+        return EventChoice1E;
+    }
+
+    public void setEventChoice1E(String eventChoice1E) {
+        EventChoice1E = eventChoice1E;
+    }
+
+    public String getEventChoice2E() {
+        return EventChoice2E;
+    }
+
+    public void setEventChoice2E(String eventChoice2E) {
+        EventChoice2E = eventChoice2E;
+    }
+
+    public String getEventChoice3E() {
+        return EventChoice3E;
+    }
+
+    public void setEventChoice3E(String eventChoice3E) {
+        EventChoice3E = eventChoice3E;
     }
 
     public int getImageCheck() {

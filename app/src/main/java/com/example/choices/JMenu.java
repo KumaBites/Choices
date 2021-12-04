@@ -35,18 +35,19 @@ public class JMenu extends AppCompatActivity {
         String name = MainModel.getName();
         switch (name) {
             case "Japanese to English":
-                debtListArray.add(new JModel("JToE1"));
-                debtListArray.add(new JModel("JToE2"));
-                debtListArray.add(new JModel("JToE3"));
+                debtListArray.add(new JModel("Who is this person?"));
+                debtListArray.add(new JModel("Mr A and Mr O. "));
+                debtListArray.add(new JModel("Good Morning。"));
                 //set adapter to recyclerview
                 mAdapter = new JRecyclerViewAdapter(debtListArray, this);
                 //set adapter to recyclerview
                 mRecyclerView.setAdapter(mAdapter);
                 break;
             case "Japanese Only":
-                debtListArray.add(new JModel("J1only"));
-                debtListArray.add(new JModel("J2only"));
-                debtListArray.add(new JModel("J3only"));
+
+                debtListArray.add(new JModel("あの　かたは　どなた　ですか。"));
+                debtListArray.add(new JModel("アさん　と　オさん。"));
+                debtListArray.add(new JModel("おはようございます。"));
                 mAdapter = new JRecyclerViewAdapter(debtListArray, this);
                 //set adapter to recyclerview
                 mRecyclerView.setAdapter(mAdapter);

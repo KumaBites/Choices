@@ -45,26 +45,19 @@ public class JRecyclerViewAdapter extends RecyclerView.Adapter<JRecyclerViewAdap
                 @Override
                 public void onClick(View v) {
                     String storyName = storyList.get(position).getMenu();
-                    //checks the story name and the sets the event ID
                     switch (storyName)
                     {
-                        case "JToE1":
-                            double eventId = 2.0;
-                            Intent newStory1 = new Intent(context, Event.class);
-                            context.startActivity(newStory1);
-                            Player.setCurrentEventID(eventId);
+                        case "あの　かたは　どなた　ですか。":
+                            double eventId = 1.0;
+                            startStory(storyName, eventId);
                             break;
-                        case "JToE2":
-                            double eventId2 = 3.0;
-                            Intent newStory2 = new Intent(context, Event.class);
-                            context.startActivity(newStory2);
-                            Player.setCurrentEventID(eventId2);
+                        case "アさん　と　オさん。":
+                            double eventId2 = 2.0;
+                            startStory(storyName, eventId2);
                             break;
-                        case "JToE3":
-                            double eventId3 = 1.0;
-                            Intent newStory3 = new Intent(context, Event.class);
-                            context.startActivity(newStory3);
-                            Player.setCurrentEventID(eventId3);
+                        case "おはようございます。":
+                            double eventId3 = 3.0;
+                            startStory(storyName, eventId3);
                             break;
 
                     }
@@ -89,7 +82,7 @@ public class JRecyclerViewAdapter extends RecyclerView.Adapter<JRecyclerViewAdap
         public void startStory(String storyName, final double eventId)
         {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            builder.setMessage("Do you want to start the adventure: " +storyName+"?");
+            builder.setMessage("Do you want to start : " +storyName+"?");
             builder.setCancelable(true);
             builder.setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
                 @Override

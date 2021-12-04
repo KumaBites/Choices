@@ -17,6 +17,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
 
         private List<MainModel> menuList;
         Context context;
+        private String jToE, jOnly, credits, information;
 
         public MainRecyclerViewAdapter(List<MainModel> eventList, Context context) {
             this.menuList = eventList;
@@ -33,7 +34,10 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
 
         @Override
         public void onBindViewHolder(MainRecyclerViewAdapter.EventViewHolder holder, final int position) {
-
+            jToE = "Japanese to English";
+            jOnly = "Japanese Only";
+            information = "Information about app";
+            credits = "Credits and thank yous";
             holder.mainRecyclerView.setText("Menu Option : "+(menuList.get(position).getMain()));
             holder.mainRecyclerView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -43,37 +47,16 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
                     switch (storyName)
                     {
                         case "Japanese to English":
-                            Intent newMenu1 = new Intent(context, JMenu.class);
-                            context.startActivity(newMenu1);
-                            MainModel.setName("Japanese to English");
-
-                         //   JToE.getInstance().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-                            //Removes from the back stack and destroys it
-                           // JToE.getInstance().finish();
+                        startMain(storyName);
                             break;
                         case "Japanese Only":
-                            Intent newMenu2 = new Intent(context, JMenu.class);
-                            context.startActivity(newMenu2);
-                            MainModel.setName("Japanese Only");
-                          //  JToE.getInstance().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-                            //Removes from the back stack and destroys it
-                           // JToE.getInstance().finish();
+                        startMain(storyName);
                             break;
                         case "Information about app":
-                            Intent newMenu3 = new Intent(context, CreditsAndInfo.class);
-                            context.startActivity(newMenu3);
-                            MainModel.setName("Information about app");
-                         //   JToE.getInstance().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-                            //Removes from the back stack and destroys it
-                           // JToE.getInstance().finish();
+                        startMain(storyName);
                             break;
                         case "Credits and thank yous":
-                            Intent newMenu4 = new Intent(context, CreditsAndInfo.class);
-                            context.startActivity(newMenu4);
-                            MainModel.setName("Credits and thank yous");
-                        //    JToE.getInstance().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-                            //Removes from the back stack and destroys it
-                          //  JToE.getInstance().finish();
+                        startMain(storyName);
                             break;
                     }
 
@@ -95,7 +78,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
             }
         }
 
-    public void startMain(String main)
+    public void startMain(final String main)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setMessage("Starting: " +main+"?");
@@ -103,17 +86,43 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
         builder.setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent newMenu1 = new Intent(context, JMenu.class);
-                context.startActivity(newMenu1);
-               // JToE.getInstance().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-                //Removes from the back stack and destroys it
-               // JToE.getInstance().finish();
+                if (main.equals(jToE)) {
+                    Intent newMenu = new Intent(context, JMenu.class);
+                    MainModel.setName("Japanese to English");
+                    context.startActivity(newMenu);
+                    Main.getInstance().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    //Removes from the back stack and destroys it
+                    Main.getInstance().finish();
+                } else if (main.equals(jOnly)) {
+                    Intent newMenu = new Intent(context, JMenu.class);
+                    MainModel.setName("Japanese Only");
+                    context.startActivity(newMenu);
+                    Main.getInstance().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    //Removes from the back stack and destroys it
+                    Main.getInstance().finish();
 
+                } else if (main.equals(information)) {
+                    Intent newMenu = new Intent(context, CreditsAndInfo.class);
+                    MainModel.setName("Information about app");
+                    context.startActivity(newMenu);
+                    Main.getInstance().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    //Removes from the back stack and destroys it
+                    Main.getInstance().finish();
+                } else if (main.equals(credits)) {
+                    Intent newMenu = new Intent(context, CreditsAndInfo.class);
+                    MainModel.setName("Credits and thank yous");
+                    context.startActivity(newMenu);
+                    Main.getInstance().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    //Removes from the back stack and destroys it
+                    Main.getInstance().finish();
+                }
             }
         });
         builder.show();
+
+        }
     }
-    }
+
 
 
 
