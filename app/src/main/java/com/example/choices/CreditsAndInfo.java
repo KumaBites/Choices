@@ -48,8 +48,10 @@ public class CreditsAndInfo extends AppCompatActivity {
     }
 
     public void quitToMainMenu(View view){
-        Intent quit = new Intent(this, JMenu.class);
+        Intent quit = new Intent(this, Main.class);
         startActivity(quit);
-        finish();
+        activityHandle.finish();
+        //CreditsAndInfo.activityHandle.overridePendingTransition(R.anim.slide_out_left,R.anim.slide_in_right);
+
     }
 }

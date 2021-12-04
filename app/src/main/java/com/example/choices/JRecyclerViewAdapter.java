@@ -47,6 +47,7 @@ public class JRecyclerViewAdapter extends RecyclerView.Adapter<JRecyclerViewAdap
                     String storyName = storyList.get(position).getMenu();
                     switch (storyName)
                     {
+                        //japanese language only
                         case "あの　かたは　どなた　ですか。":
                             double eventId = 1.0;
                             startStory(storyName, eventId);
@@ -58,6 +59,19 @@ public class JRecyclerViewAdapter extends RecyclerView.Adapter<JRecyclerViewAdap
                         case "おはようございます。":
                             double eventId3 = 3.0;
                             startStory(storyName, eventId3);
+                            break;
+                    //Japanese language and English answers
+                        case "Who is this person?":
+                            double eventIdE = 1.0;
+                            startStory(storyName, eventIdE);
+                            break;
+                        case "Mr A and Mr O.":
+                            double eventId2E = 2.0;
+                            startStory(storyName, eventId2E);
+                            break;
+                        case "Good Morning.":
+                            double eventId3E = 3.0;
+                            startStory(storyName, eventId3E);
                             break;
 
                     }
@@ -90,9 +104,8 @@ public class JRecyclerViewAdapter extends RecyclerView.Adapter<JRecyclerViewAdap
                     Intent newStory = new Intent(context, Event.class);
                     context.startActivity(newStory);
                     Player.setCurrentEventID(eventId);
-                    //JToE.getInstance().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                     //Removes from the back stack and destroys it
-                    //JToE.getInstance().finish();
+                    JMenu.getInstance().finish();
 
                 }
             });

@@ -1,6 +1,7 @@
 package com.example.choices;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -36,8 +37,8 @@ public class JMenu extends AppCompatActivity {
         switch (name) {
             case "Japanese to English":
                 debtListArray.add(new JModel("Who is this person?"));
-                debtListArray.add(new JModel("Mr A and Mr O. "));
-                debtListArray.add(new JModel("Good Morning。"));
+                debtListArray.add(new JModel("Mr A and Mr O."));
+                debtListArray.add(new JModel("Good Morning."));
                 //set adapter to recyclerview
                 mAdapter = new JRecyclerViewAdapter(debtListArray, this);
                 //set adapter to recyclerview
@@ -62,7 +63,9 @@ public class JMenu extends AppCompatActivity {
     public void quitToMain(View view)
     {
 
-        System.exit(0);
+        Intent quit = new Intent(this, Main.class);
+        startActivity(quit);
+        activityHandle.finish();
 
     }
 

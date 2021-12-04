@@ -31,9 +31,7 @@ public class Event extends AppCompatActivity {
     private List<EventModel> currentEventListChoices;
     private List<MainModel> questionEventList;
     private List<DescriptionModel> descriptionEventList;
-    private List<String> currentEventdescription;
     private List<Events> allStoryEventList;
-    private List<Enemy> enemyEventList;
     private EventRecyclerViewAdapter eAdapter;
     private QuestionRecyclerViewAdapter qAdapter;
     private DescriptionRecyclerViewAdapter dAdapter;
@@ -102,13 +100,12 @@ public class Event extends AppCompatActivity {
 
                 imageCheck = EM.getImageCheck();
 
-                if (imageCheck ==1)
+                if (imageCheck ==1 && MainModel.getName().equals("Japanese Only"))
 
                 {
                     Player.setNextEventID1(EM.getNextEventID1());
                     Player.setNextEventID2(EM.getNextEventID2());
                     Player.setNextEventID3(EM.getNextEventID3());
-
 
                     enemyCheck = EM.getEnemyCheck();
                     Player.setEnemyCheck(enemyCheck);
@@ -129,7 +126,33 @@ public class Event extends AppCompatActivity {
                     questionEventList.add(new MainModel(question));
                     descriptionEventList.add((new DescriptionModel(description, image)));
                 }
-                else
+                else if((imageCheck ==1 && MainModel.getName().equals("Japanese to English")))
+                    {
+                        Player.setNextEventID1(EM.getNextEventID1());
+                        Player.setNextEventID2(EM.getNextEventID2());
+                        Player.setNextEventID3(EM.getNextEventID3());
+
+                        enemyCheck = EM.getEnemyCheck();
+                        Player.setEnemyCheck(enemyCheck);
+
+                        enemyId = EM.getEnemyId();
+                        EnemyEncounter.setEnemyId(enemyId);
+
+                        eventTitle.setText(EM.getEventName());
+
+                        String eventChoice1 = EM.getEventChoice1E();
+                        String eventChoice2 = EM.getEventChoice2E();
+                        String eventChoice3 = EM.getEventChoice3E();
+                        String question = EM.getEventQuestion();
+                        String description = EM.getEventDescription();
+                        String image = EM.getImageName();
+
+                        currentEventListChoices.add(new EventModel( eventChoice1, eventChoice2, eventChoice3));
+                        questionEventList.add(new MainModel(question));
+                        descriptionEventList.add((new DescriptionModel(description, image)));
+                }
+
+                else if((imageCheck ==0 && MainModel.getName().equals("Japanese Only")))
                 {
 
                     Player.setNextEventID1(EM.getNextEventID1());
@@ -155,6 +178,36 @@ public class Event extends AppCompatActivity {
                     currentEventListChoices.add(new EventModel( eventChoice1, eventChoice2, eventChoice3));
                     questionEventList.add(new MainModel(question));
                     descriptionEventList.add((new DescriptionModel(description, image)));
+                }
+                else if((imageCheck ==0 && MainModel.getName().equals("Japanese to English"))){
+
+                    Player.setNextEventID1(EM.getNextEventID1());
+                    Player.setNextEventID2(EM.getNextEventID2());
+                    Player.setNextEventID3(EM.getNextEventID3());
+
+
+                    enemyCheck = EM.getEnemyCheck();
+                    Player.setEnemyCheck(enemyCheck);
+
+                    enemyId = EM.getEnemyId();
+                    EnemyEncounter.setEnemyId(enemyId);
+
+                    eventTitle.setText(EM.getEventName());
+
+                    String eventChoice1 = EM.getEventChoice1E();
+                    String eventChoice2 = EM.getEventChoice2E();
+                    String eventChoice3 = EM.getEventChoice3E();
+                    String question = EM.getEventQuestion();
+                    String description = EM.getEventDescription();
+                    String image = "";
+
+                    currentEventListChoices.add(new EventModel( eventChoice1, eventChoice2, eventChoice3));
+                    questionEventList.add(new MainModel(question));
+                    descriptionEventList.add((new DescriptionModel(description, image)));
+
+
+
+
                 }
 
 
@@ -200,7 +253,9 @@ public class Event extends AppCompatActivity {
         }
     }
 
+public void image(){
 
+}
 
     public void quit (View view){
 
