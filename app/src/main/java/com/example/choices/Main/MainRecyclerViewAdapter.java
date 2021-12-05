@@ -1,4 +1,4 @@
-package com.example.choices;
+package com.example.choices.Main;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,6 +10,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.choices.CreditsInformation.CreditsAndInfo;
+import com.example.choices.JMenu.JMenu;
+import com.example.choices.R;
 
 import java.util.List;
 

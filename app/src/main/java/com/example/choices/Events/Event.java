@@ -1,4 +1,4 @@
-package com.example.choices;
+package com.example.choices.Events;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -8,7 +8,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.choices.Battle.Battle;
+import com.example.choices.Description.DescriptionModel;
+import com.example.choices.Description.DescriptionRecyclerViewAdapter;
 import com.example.choices.ENTITY.Events;
+import com.example.choices.Battle.EnemyEncounter;
+import com.example.choices.JMenu.JMenu;
+import com.example.choices.Main.MainModel;
+import com.example.choices.Character.Player;
+import com.example.choices.Question.QuestionRecyclerViewAdapter;
+import com.example.choices.R;
 
 
 import java.util.ArrayList;

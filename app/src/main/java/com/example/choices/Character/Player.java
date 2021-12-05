@@ -1,4 +1,4 @@
-package com.example.choices;
+package com.example.choices.Character;
 
 public class Player {
     private static int character_id;

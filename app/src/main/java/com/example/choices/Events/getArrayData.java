@@ -1,4 +1,8 @@
-package com.example.choices;
+package com.example.choices.Events;
+
+import com.example.choices.Description.DescriptionModel;
+import com.example.choices.Events.EventModel;
+import com.example.choices.Main.MainModel;
 
 import java.util.List;
 

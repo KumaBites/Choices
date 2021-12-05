@@ -1,4 +1,4 @@
-package com.example.choices;
+package com.example.choices.JMenu;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,15 +12,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.choices.ENTITY.Events;
+import com.example.choices.Events.Event;
+import com.example.choices.Character.Player;
+import com.example.choices.R;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 
 public class JRecyclerViewAdapter extends RecyclerView.Adapter<JRecyclerViewAdapter.StoryViewHolder> {

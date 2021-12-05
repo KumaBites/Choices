@@ -1,4 +1,4 @@
-package com.example.choices;
+package com.example.choices.Events;
 
 public class EventModel {
 

@@ -1,4 +1,4 @@
-package com.example.choices;
+package com.example.choices.Battle;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +15,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.choices.ENTITY.Enemy;
+import com.example.choices.Events.Event;
+import com.example.choices.Events.EventsDatabase;
+import com.example.choices.JMenu.JMenu;
+import com.example.choices.Character.Player;
+import com.example.choices.R;
 
 import java.util.List;
 import java.util.Random;

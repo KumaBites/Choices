@@ -1,4 +1,4 @@
-package com.example.choices;
+package com.example.choices.CreditsInformation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Switch;
+
+import com.example.choices.Main.Main;
+import com.example.choices.Main.MainModel;
+import com.example.choices.R;
 
 import java.util.ArrayList;
 import java.util.List;

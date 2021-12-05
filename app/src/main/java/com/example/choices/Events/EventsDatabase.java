@@ -1,4 +1,4 @@
-package com.example.choices;
+package com.example.choices.Events;
 
 import android.content.Context;
 

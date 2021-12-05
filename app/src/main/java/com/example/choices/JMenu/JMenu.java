@@ -1,4 +1,4 @@
-package com.example.choices;
+package com.example.choices.JMenu;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -10,6 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.choices.ENTITY.Events;
+import com.example.choices.Events.EventsDatabase;
+import com.example.choices.Main.Main;
+import com.example.choices.Main.MainModel;
+import com.example.choices.R;
 
 import java.util.ArrayList;
 import java.util.List;

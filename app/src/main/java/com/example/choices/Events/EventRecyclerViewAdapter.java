@@ -1,4 +1,4 @@
-package com.example.choices;
+package com.example.choices.Events;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,6 +13,9 @@ import java.util.List;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.choices.Character.Player;
+import com.example.choices.R;
 
 
 public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecyclerViewAdapter.EventViewHolder> {

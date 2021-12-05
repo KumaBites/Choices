@@ -1,4 +1,4 @@
-package com.example.choices;
+package com.example.choices.Main;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.choices.R;
 
 import java.util.ArrayList;
 import java.util.List;

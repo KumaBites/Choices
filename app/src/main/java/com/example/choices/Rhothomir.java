@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.choices.Character.Player;
 import com.example.choices.ENTITY.PlayerDatabase;
+import com.example.choices.Events.EventsDatabase;
 
 import java.util.List;
 import java.util.concurrent.Callable;

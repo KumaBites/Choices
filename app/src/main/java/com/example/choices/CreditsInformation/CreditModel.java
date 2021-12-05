@@ -1,4 +1,4 @@
-package com.example.choices;
+package com.example.choices.CreditsInformation;
 
 public class CreditModel {
 

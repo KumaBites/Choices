@@ -1,4 +1,4 @@
-package com.example.choices;
+package com.example.choices.Character;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,6 +10,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.choices.ENTITY.PlayerDatabase;
+import com.example.choices.Events.EventsDatabase;
+import com.example.choices.JMenu.JMenu;
+import com.example.choices.R;
 
 import java.util.ArrayList;
 import java.util.List;
